@@ -10,8 +10,7 @@ function MaterialCard({ name, defaultValue, rarity, imageName }) {
 		if (currentValue === '') {
 			setValue('');
 		} else if (!(/^[-0-9]*$/.test(currentValue))) {
-			let newValue = currentValue.slice(0, -1);
-			setValue(newValue);
+			// If input is character, Do nothing
 		} else {
 			// Check if value is number or not
 			if (/^[0-9]*$/.test(currentValue)) {
