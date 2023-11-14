@@ -38,14 +38,18 @@ function MaterialCardsWrapper() {
 		{ src: 'ascension_materials/common/gems/VayudaTurquoiseGemstone.png', rarity: 5 },
 		{ src: 'ascension_materials/common/gems/VayudaTurquoiseChunk.png', rarity: 4 },
 		{ src: 'ascension_materials/common/gems/VayudaTurquoiseFragment.png', rarity: 3 },
-		{ src: 'ascension_materials/common/gems/VayudaTurquoiseSliver.png', rarity: 2 }
+		{ src: 'ascension_materials/common/gems/VayudaTurquoiseSliver.png', rarity: 2 },
+
+		{ src: 'ascension_materials/normal_drops/WanderersBloomingFlower.png', rarity: 4 },
+		{ src: 'ascension_materials/normal_drops/TreasuredFlower.png', rarity: 3 },
+		{ src: 'ascension_materials/normal_drops/AFlowerYettoBloom.png', rarity: 2 },
 	]
 
 	const inventory = () => {
 		let inventoryList = [];
 		for (let index = 0; index < image.length; index++) {
 			inventoryList.push(
-				<MaterialCard key={index} name={index} defaultValue={0} rarity={image[index].rarity} imageName={image[index].src}></MaterialCard>
+				<MaterialCard key={index} name={index} defaultValue={0} rarity={image[index].rarity} imageName={image[index].src} />
 			);
 		}
 		return inventoryList;

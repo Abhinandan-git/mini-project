@@ -1,5 +1,5 @@
-import Buttons from './components/Buttons';
 import MaterialCardsWrapper from './components/MaterialCardsWrapper';
+import Buttons from './components/Buttons';
 
 function App() {
 	return (
