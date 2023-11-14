@@ -1,0 +1,78 @@
+@import url(common.css);
+
+.inventory-wrapper {
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	position: absolute;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.65);
+}
+
+.inventory-wrapper.inventory-invis {
+	display: none;
+}
+
+.inventory-body {
+	width: 75%;
+	overflow: hidden;
+	border-radius: 3px;
+	height: calc(100% - 50px);
+	background-color: var(--dark-gunmetal);
+}
+
+.flex-wrapper {
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
+	width: calc(100% - 2rem);
+	align-content: flex-start;
+}
+
+.flex-scroll {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	overflow-y: auto;
+	align-items: center;
+	justify-content: center;
+}
+
+.flex-body {
+	width: 100%;
+	padding: 1rem 0;
+	height: calc(100% - 66px);
+	box-shadow: inset 0 0 7px 0 var(--transparent-black), 0 0 7px 0 transparent;
+}
+
+.flex-scroll::-webkit-scrollbar {
+	width: 6px;
+	height: calc(100% + 1rem);
+}
+
+.flex-scroll::-webkit-scrollbar-track {
+	margin: -1rem 0;
+	height: calc(100% + 1rem);
+	background-color: transparent;
+	box-shadow: inset 0 0 3px 0 var(--transparent-black), 0 0 0 0 transparent;
+}
+
+.flex-scroll::-webkit-scrollbar-thumb {
+	border-radius: 3px;
+	background-color: var(--transparent-black);
+}
+
+.save-button-wrapper {
+	width: 100%;
+	height: 66px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
