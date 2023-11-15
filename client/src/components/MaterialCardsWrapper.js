@@ -13,7 +13,7 @@ function MaterialCardsWrapper() {
   
 	const fetchData = async () => {
 		try {
-			const response = await fetch('http://localhost:3001/api/characters');
+			const response = await fetch(`http://localhost:3000/api/characters`);
 			const result = await response.json();
 			setData(result);
 		} catch (error) {

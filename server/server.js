@@ -3,12 +3,13 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 dotenv.config();
+console.log(process.env.KEY);
+console.log(process.env.PORT);
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 
-const uri = `mongodb+srv://practice_user:T0R9lDUGvtI6pxLs@practicedatacluster.cqvdh61.mongodb.net`;
-// const uri = `mongodb+srv://practice_user:${process.env.PASSWORD}@practicedatacluster.cqvdh61.mongodb.net`;
+const uri = `mongodb+srv://practice_user:${process.env.KEY}@practicedatacluster.cqvdh61.mongodb.net`;
 const filter = {};
 const projection = { '_id': 0 };
 
