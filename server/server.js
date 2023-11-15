@@ -9,7 +9,7 @@ console.log(process.env.PORT);
 const app = express();
 const port = process.env.PORT || 3002;
 
-const uri = `mongodb+srv://practice_user:${process.env.KEY}@practicedatacluster.cqvdh61.mongodb.net`;
+const uri = `mongodb+srv://practice_user:${process.env.KEY}@practicedatacluster.cqvdh61.mongodb.net/?retryWrites=true&w=majority`;
 const filter = {};
 const projection = { '_id': 0 };
 
@@ -20,15 +20,13 @@ const client = new MongoClient(uri, {
 	useUnifiedTopology: true,
 });
 
-app.get('/api/characters', async (req, res) => {
+app.get('/api/material', async (req, res) => {
 	try {
 		await client.connect();
 		console.log('Connected to MongoDB Atlas');
-		
 		// Connect to database
-		const database = client.db('character');
+		const database = client.db('materials');
 		const collection = database.collection('details');
-
 		// Query documents
 		const result = await collection.find(filter, { projection }).toArray();
 		res.json(result);
