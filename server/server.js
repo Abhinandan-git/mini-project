@@ -7,7 +7,7 @@ console.log(process.env.KEY);
 console.log(process.env.PORT);
 
 const app = express();
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3001;
 
 const uri = `mongodb+srv://practice_user:${process.env.KEY}@practicedatacluster.cqvdh61.mongodb.net/?retryWrites=true&w=majority`;
 const filter = {};
