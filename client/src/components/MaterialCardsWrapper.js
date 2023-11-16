@@ -13,7 +13,7 @@ function MaterialCardsWrapper() {
   
 	const fetchData = async () => {
 		try {
-			const response = await fetch(`http://localhost:3000/api/characters`);
+			const response = await fetch(`http://localhost:3001/api/material`);
 			const result = await response.json();
 			setData(result);
 		} catch (error) {
@@ -34,11 +34,11 @@ function MaterialCardsWrapper() {
 						<div className='flex-wrapper'>
 							{data.map((item, index) => (
 								<MaterialCard
-									key={index}
+									key={item.key}
 									defaultValue={0}
-									rarity={5}
-									name={item.name}
-									imageName={`characters/${item.name.replace(' ', '')}.png`}
+									rarity={item.rarity}
+									name={item.key}
+									imageName={item.src}
 								/>
 							))}
 						</div>
