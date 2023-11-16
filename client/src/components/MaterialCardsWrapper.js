@@ -21,32 +21,30 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 	};
 	
 	return (
-		<>
-			{isVisible ? <div className='inventory-wrapper' id='inventory-wrapper'>
-				<div className='inventory-body'>
-					<div className='save-button-wrapper'>
-						<Button onClick={toggleFunction} id='inven-save'>
-							<div className='rect-button-label'>Save & Close</div>
-						</Button>
-					</div>
-					<div className='flex-body'>
-						<div className='flex-scroll'>
-							<div className='flex-wrapper'>
-								{data.map((item, index) => (
-									<MaterialCard
-										key={item.key}
-										defaultValue={0}
-										rarity={item.rarity}
-										name={item.key}
-										imageName={item.src}
-									/>
-								))}
-							</div>
+		<div className='inventory-wrapper inventory-invis' id='inventory-wrapper'>
+			<div className='inventory-body'>
+				<div className='save-button-wrapper'>
+					<Button onClick={toggleFunction} id='inven-save'>
+						<div className='rect-button-label'>Save & Close</div>
+					</Button>
+				</div>
+				<div className='flex-body'>
+					<div className='flex-scroll'>
+						<div className='flex-wrapper'>
+							{data.map((item, index) => (
+								<MaterialCard
+									key={item.key}
+									defaultValue={0}
+									rarity={item.rarity}
+									name={item.key}
+									imageName={item.src}
+								/>
+							))}
 						</div>
 					</div>
 				</div>
-			</div> : null}
-		</>
+			</div>
+		</div>
 	);
 }
 
