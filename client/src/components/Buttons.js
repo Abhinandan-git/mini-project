@@ -1,4 +1,4 @@
-import { charAdd, weaponAdd, inventoryManage } from './Functions.js';
+import { charAdd, weaponAdd } from './Functions.js';
 import './css/Buttons.css';
 import './css/common.css';
 
@@ -12,7 +12,7 @@ function Button({ onClick, id, children }) {
 	);
 }
 
-function Buttons() {
+function Buttons({ toggleFunction }) {
 	return (
 		<div className='menu-bar'>
 			<Button onClick={charAdd} id='chr-add'>
@@ -21,7 +21,7 @@ function Buttons() {
 			<Button onClick={weaponAdd} id='wpn-add'>
 				<div className='rect-button-label'>Add Weapon</div>
 			</Button>
-			<Button onClick={inventoryManage} id='inv-mng'>
+			<Button onClick={toggleFunction} id='inv-mng'>
 				<div className='rect-button-label'>Manage Inventory</div>
 			</Button>
 		</div>
