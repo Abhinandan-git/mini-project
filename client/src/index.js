@@ -6,10 +6,6 @@ import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-document.addEventListener('DOMContentLoaded', () => {
-	document.getElementsByTagName('body')[0].classList.add('noscroll');
-});
-
 root.render(
   <React.StrictMode>
     <App />
