@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import MaterialCard from './MaterialCard';
-import { inventorySave } from './Functions';
 import { Button } from './Buttons';
 import './css/MaterialCardsWrapper.css';
 
-function MaterialCardsWrapper() {
+function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 	const [data, setData] = useState([]);
-  
+
 	useEffect(() => {
-	  	fetchData();
+		fetchData();
 	}, []);
-  
+	
 	const fetchData = async () => {
 		try {
 			const response = await fetch(`http://localhost:3001/api/material`);
@@ -20,12 +19,12 @@ function MaterialCardsWrapper() {
 			console.error('Error fetching data:', error);
 		}
 	};
-
+	
 	return (
-		<div className='inventory-wrapper' id='inventory-wrapper'>
+		<div className='inventory-wrapper inventory-invis' id='inventory-wrapper'>
 			<div className='inventory-body'>
 				<div className='save-button-wrapper'>
-					<Button onClick={inventorySave} id='inven-save'>
+					<Button onClick={toggleFunction} id='inven-save'>
 						<div className='rect-button-label'>Save & Close</div>
 					</Button>
 				</div>

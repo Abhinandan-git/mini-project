@@ -6,12 +6,4 @@ const weaponAdd = () => {
 	alert('weaponAdd');
 }
 
-const inventoryManage = () => {
-	alert('inventoryManage');
-}
-
-const inventorySave = () => {
-	alert('inventorySave');
-}
-
-export { charAdd, weaponAdd, inventoryManage, inventorySave };
+export { charAdd, weaponAdd };
