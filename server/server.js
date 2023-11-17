@@ -8,8 +8,8 @@ console.log(process.env.PORT);
 
 const app = express();
 const port = process.env.PORT || 3001;
+const uri = process.env.URL || '';
 
-const uri = `mongodb+srv://practice_user:${process.env.KEY}@practicedatacluster.cqvdh61.mongodb.net/?retryWrites=true&w=majority`;
 const filter = {};
 const projection = { '_id': 0 };
 
