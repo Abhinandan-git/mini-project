@@ -1,0 +1,44 @@
+@import url(common.css);
+
+.loading {
+	width: 100px;
+	height: 100px;
+	display: block;
+	animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.circle {
+	stroke-width: 8;
+	fill: transparent;
+	stroke: #cccccc;
+	stroke-dashoffset: 0;
+	stroke-dasharray: 175;
+}
+.circle {
+	animation: dash 1.75s linear infinite;
+}
+
+@keyframes dash {
+	0% {
+		stroke-dashoffset: 175;
+	}
+	50% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: -175;
+	}
+}
+
+.loading-hide {
+	display: none;
+}

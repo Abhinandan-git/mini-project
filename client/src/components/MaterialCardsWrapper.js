@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MaterialCard from './MaterialCard';
+import Loading from './Loading';
 import { Button } from './Buttons';
 import './css/MaterialCardsWrapper.css';
 
@@ -15,6 +16,7 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 			const response = await fetch(`http://localhost:3001/api/material`);
 			const result = await response.json();
 			setData(result);
+			document.getElementById('inv-loading').classList.add('loading-hide');
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
@@ -31,6 +33,7 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 				<div className='flex-body'>
 					<div className='flex-scroll'>
 						<div className='flex-wrapper'>
+							<Loading id='inv-loading' />
 							{data.map((item, index) => (
 								<MaterialCard
 									key={item.key}
