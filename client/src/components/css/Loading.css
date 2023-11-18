@@ -17,11 +17,11 @@
 }
 
 .circle {
-	fill: transparent;
-	stroke: #007bff;
 	stroke-width: 8;
-	stroke-dasharray: 175;
+	fill: transparent;
+	stroke: #cccccc;
 	stroke-dashoffset: 0;
+	stroke-dasharray: 175;
 }
 .circle {
 	animation: dash 1.75s linear infinite;
