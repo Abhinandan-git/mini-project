@@ -3,8 +3,6 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 dotenv.config();
-console.log(process.env.KEY);
-console.log(process.env.PORT);
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -30,7 +28,7 @@ app.get('/api/material', async (req, res) => {
 		// Query documents
 		const result = await collection.find(filter, { projection }).toArray();
 		res.json(result);
-	} catch(e) {
+	} catch (e) {
 		console.error('Error connecting to MongoDB Atlas', e);
 	} finally {
 		await client.close();
