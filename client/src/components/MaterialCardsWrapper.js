@@ -27,7 +27,7 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 
 	const submitData = async () => {
 		try {
-			const response = await fetch(`http://localhost:3001/api/mateial-input`, {
+			const response = await fetch(`http://localhost:3002/api/material-input`, {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json'

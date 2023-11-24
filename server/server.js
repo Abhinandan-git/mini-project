@@ -4,21 +4,25 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 dotenv.config();
 
-const app = express();
+const main_app = express();
 const port = process.env.PORT || 3001;
 const uri = process.env.URL || '';
+
+const material_input_app = express();
+const material_port = process.env.MATERIALPORT || 3002;
 
 const filter = {};
 const projection = { '_id': 0 };
 
-app.use(cors());
+main_app.use(cors());
+material_input_app.use(cors());
 
 const client = new MongoClient(uri, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 });
 
-app.get('/api/material', async (req, res) => {
+main_app.get('/api/material', async (req, res) => {
 	try {
 		await client.connect();
 		console.log('Connected to MongoDB Atlas');
@@ -35,6 +39,15 @@ app.get('/api/material', async (req, res) => {
 	}
 });
 
-app.listen(port, () => {
+material_input_app.post('/api/material-input', async (req, res) => {
+	const recieved_data = req.body;
+	res.status(201).json({ message: 'Data received and processed successfully', data: recieved_data });
+});
+
+main_app.listen(port, () => {
 	console.log(`Server running on port ${port}`);
+});
+
+material_input_app.listen(material_port, () => {
+	console.log(`Server running on port ${material_port}`);
 });
