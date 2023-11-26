@@ -35,7 +35,9 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 				body: JSON.stringify(allMaterialData)
 			});
 			if (response.ok) {
-				console.log('SENT!!');
+				console.log('Data sent successfully');
+			} else {
+				console.log('Failed to send data');
 			}
 		} catch (error) {
 			console.error('Error sending data:', error);

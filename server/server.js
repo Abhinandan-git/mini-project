@@ -1,4 +1,5 @@
 const { MongoClient } = require('mongodb');
+const bodyParser = require('body-parser');
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -16,6 +17,7 @@ const projection = { '_id': 0 };
 
 main_app.use(cors());
 material_input_app.use(cors());
+material_input_app.use(bodyParser.json());
 
 const client = new MongoClient(uri, {
 	useNewUrlParser: true,
@@ -42,6 +44,7 @@ main_app.get('/api/material', async (req, res) => {
 material_input_app.post('/api/material-input', async (req, res) => {
 	const recieved_data = req.body;
 	res.status(201).json({ message: 'Data received and processed successfully', data: recieved_data });
+	console.log(recieved_data);
 });
 
 main_app.listen(port, () => {
