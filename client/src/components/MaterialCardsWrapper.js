@@ -27,7 +27,7 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 
 	const submitData = async () => {
 		try {
-			const response = await fetch(`http://localhost:3002/api/material-input`, {
+			const response = await fetch(`http://localhost:3001/api/material-input`, {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json'
@@ -39,6 +39,7 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 			} else {
 				console.log('Failed to send data');
 			}
+			console.log(allMaterialData);
 		} catch (error) {
 			console.error('Error sending data:', error);
 		};

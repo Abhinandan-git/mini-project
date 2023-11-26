@@ -34,8 +34,8 @@ main_app.get('/api/material', async (req, res) => {
 		// Query documents
 		const result = await collection.find(filter, { projection }).toArray();
 		res.json(result);
-	} catch (e) {
-		console.error('Error connecting to MongoDB Atlas', e);
+	} catch (error) {
+		console.error('Error connecting to MongoDB Atlas', error);
 	} finally {
 		await client.close();
 	}
