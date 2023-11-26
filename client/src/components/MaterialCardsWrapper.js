@@ -7,6 +7,8 @@ import './css/MaterialCardsWrapper.css';
 
 function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 	const [data, setData] = useState([]);
+	const [canSubmit, setCanSubmit] = useState(false);
+	const [allMaterialData, setAllMaterialData] = useState({});
 
 	useEffect(() => {
 		fetchData();
@@ -18,9 +20,43 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 			const result = await response.json();
 			result.sort(Compare);
 			setData(result);
+			setCanSubmit(true);
 			document.getElementById('inv-loading').classList.add('loading-hide');
 		} catch (error) {
 			console.error('Error fetching data:', error);
+		}
+	};
+
+	const submitData = async () => {
+		try {
+			const response = await fetch(`http://localhost:3002/api/material-input`, {
+				method: 'POST',
+				headers: {
+					'Content-type': 'application/json'
+				},
+				body: JSON.stringify(allMaterialData)
+			});
+			if (response.ok) {
+				console.log('SENT!!');
+			}
+		} catch (error) {
+			console.error('Error sending data:', error);
+		};
+	};
+
+	const handleSubmit = () => {
+		toggleFunction();
+		if (canSubmit) {
+			let temporaryObject = {};
+			for (let index = 1001; index <= 1332; index++) {
+				const inputID = `input_${index}`;
+				const inputField = document.getElementById(inputID);
+				if (inputField) {
+					temporaryObject[inputID] = +inputField.value;
+				}
+			}
+			setAllMaterialData(temporaryObject);
+			submitData();
 		}
 	};
 	
@@ -28,7 +64,7 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 		<div className='inventory-wrapper inventory-invis' id='inventory-wrapper'>
 			<div className='inventory-body'>
 				<div className='save-button-wrapper'>
-					<Button onClick={toggleFunction} id='inven-save'>
+					<Button onClick={handleSubmit} id='inven-save'>
 						<div className='rect-button-label'>Save & Close</div>
 					</Button>
 				</div>
