@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MaterialCard from './MaterialCard';
 import Loading from './Loading';
 import { Button } from './Buttons';
+import { Compare } from './Functions';
 import './css/MaterialCardsWrapper.css';
 
 function MaterialCardsWrapper({ isVisible, toggleFunction }) {
@@ -15,6 +16,7 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 		try {
 			const response = await fetch(`http://localhost:3001/api/material`);
 			const result = await response.json();
+			result.sort(Compare);
 			setData(result);
 			document.getElementById('inv-loading').classList.add('loading-hide');
 		} catch (error) {
