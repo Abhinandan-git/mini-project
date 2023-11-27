@@ -13,6 +13,7 @@ const material_input_app = express();
 const material_port = process.env.MATERIALPORT || 3002;
 
 const filter = {};
+const user_filter = {"username": "ABC", "password": "password"};
 const projection = { '_id': 0 };
 
 main_app.use(cors());
@@ -49,7 +50,7 @@ material_input_app.post('/api/material-input', async (req, res) => {
 		const collection = database.collection('input');
 		// Update documents
 		const updateOperation = { $set: recieved_data };
-		const result = await collection.updateMany(filter, updateOperation);
+		const result = await collection.updateMany(user_filter, updateOperation);
 		console.log(`${result.modifiedCount} records updated successfully.`);
 	} catch (error) {
 		console.error('Error connecting to MongoDB Atlas', error);
