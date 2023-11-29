@@ -8,7 +8,6 @@ import './css/MaterialCardsWrapper.css';
 function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 	const [data, setData] = useState([]);
 	const [canSubmit, setCanSubmit] = useState(false);
-	const [allMaterialData, setAllMaterialData] = useState({});
 
 	useEffect(() => {
 		fetchData();
@@ -27,18 +26,21 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 		}
 	};
 
-	const submitData = async () => {
+	const submitData = async materialData => {
 		try {
 			const response = await fetch(`http://localhost:3002/api/material-input`, {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json'
 				},
-				body: JSON.stringify(allMaterialData)
+				body: JSON.stringify(materialData)
 			});
 			if (response.ok) {
-				console.log('SENT!!');
+				console.log('Data sent successfully');
+			} else {
+				console.log('Failed to send data');
 			}
+			console.log(materialData);
 		} catch (error) {
 			console.error('Error sending data:', error);
 		};
@@ -55,8 +57,7 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 					temporaryObject[inputID] = +inputField.value;
 				}
 			}
-			setAllMaterialData(temporaryObject);
-			submitData();
+			submitData(temporaryObject);
 		}
 	};
 	
