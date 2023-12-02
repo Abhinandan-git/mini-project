@@ -1,8 +1,7 @@
-import './css/MaterialCard.css';
 import './css/ItemCard.css';
 import './css/common.css';
 
-function ItemCard({ element, rarity, imageName }) {
+function ItemCard({ name, element, rarity, imageName }) {
 	return (
 		<div className='item-card-wrapper'>
 			<div className='item-card-body'>
@@ -13,6 +12,9 @@ function ItemCard({ element, rarity, imageName }) {
 								<div className='contained-image' style={{ backgroundImage: `url(${require(`./assets/${imageName}`)})` }}></div>
 								<div className='contained-image element-overlay' style={{ backgroundImage: `url(${require(`./assets/ascension_materials/common/elements/${element}.png`)})` }}></div>
 							</div>
+						</div>
+						<div className='item-text-wrapper'>
+							<div className='item-text'>{name}</div>
 						</div>
 					</div>
 				</div>

@@ -20,8 +20,8 @@ function App() {
 	return (
 		<>
 			<Buttons toggleFunction={toggleVisibility} />
-			<ItemCard element="Pyro" rarity={5} imageName="characters/Amber.png"></ItemCard>
-			<ItemCard element="Pyro" rarity={4} imageName="characters/Amber.png"></ItemCard>
+			<ItemCard name="Kamisato Ayato" element="Hydro" rarity={5} imageName="characters/KamisatoAyato.png"></ItemCard>
+			<ItemCard name="Amber" element="Pyro" rarity={4} imageName="characters/Amber.png"></ItemCard>
 			<MaterialCardsWrapper toggleFunction={toggleVisibility} isVisible={isVisible} />
 		</>
 	);

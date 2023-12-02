@@ -3,9 +3,10 @@
 .item-card-wrapper {
 	margin: 3px;
 	width: 106px;
-	height: 106px;
+	height: 148px;
+	cursor: pointer;
 	max-width: 106px;
-	max-height: 106px;
+	max-height: 148px;
 	position: relative;
 }
 
@@ -33,6 +34,7 @@
 .item-image {
 	width: 106px;
 	height: 106px;
+	position: relative;
 }
 
 .contained-image {
@@ -43,6 +45,27 @@
 	background-repeat: no-repeat;
 }
 
-.item-wrapper:hover {
-	filter: brightness(120%);
+.item-wrapper:hover { filter: brightness(120%); }
+
+.item-wrapper:hover .contained-image { filter: brightness(83.33%); }
+
+.element-overlay {
+	right: 0;
+	bottom: 0;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	border-radius: 50%;
+	background-color: var(--transparent-black);
+}
+
+.item-text {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--grey);
+	text-align: center;
+}
+
+.item-wrapper:hover .item-text {
+	text-shadow: 0 0 10px #38a6c2;
 }
