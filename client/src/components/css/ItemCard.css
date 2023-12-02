@@ -1,0 +1,48 @@
+@import url(common.css);
+
+.item-card-wrapper {
+	margin: 3px;
+	width: 106px;
+	height: 106px;
+	max-width: 106px;
+	max-height: 106px;
+	position: relative;
+}
+
+.item-card-body {
+	overflow: hidden;
+	border-radius: 3px;
+}
+
+.div-transition * { transition: all 0.2s ease 0s; }
+
+.item-image-wrapper{
+	display: flex;
+	max-width: 106px;
+	min-width: 106px;
+	max-height: 106px;
+	min-height: 106px;
+	align-items: center;
+	justify-content: center;
+}
+
+.rarity-4 { background: linear-gradient(160deg, rgba(89, 84, 130, 0.565) 0%, rgba(120, 102, 157, 0.565) 39%, rgba(183, 133, 201, 0.565) 100%); }
+
+.rarity-5 { background: linear-gradient(160deg, rgba(105, 84, 83, 0.565) 0%, rgba(161, 112, 78, 0.565) 39%, rgba(228, 171, 82, 0.565) 100%); }
+
+.item-image {
+	width: 106px;
+	height: 106px;
+}
+
+.contained-image {
+	width: 100%;
+	height: 100%;
+	background-size: contain;
+	background-position: 50%;
+	background-repeat: no-repeat;
+}
+
+.item-wrapper:hover {
+	filter: brightness(120%);
+}
