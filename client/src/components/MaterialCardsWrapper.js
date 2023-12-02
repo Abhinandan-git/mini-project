@@ -82,7 +82,7 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 				}
 			}
 			const changedData = getFromCache(temporaryObject);
-			submitData(changedData);
+			if (Object.keys(changedData).length !== 0) submitData(changedData);
 		}
 	};
 	
