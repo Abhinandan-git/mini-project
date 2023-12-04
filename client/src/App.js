@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import MaterialCardsWrapper from './components/MaterialCardsWrapper';
-import ItemCard from './components/ItemCard';
+import ItemCardsWrapper from './components/ItemCardsWrapper';
 import Buttons from './components/Buttons';
 
 function App() {
@@ -20,9 +20,8 @@ function App() {
 	return (
 		<>
 			<Buttons toggleFunction={toggleVisibility} />
-			<ItemCard name="Kamisato Ayato" element="Hydro" rarity={5} imageName="characters/KamisatoAyato.png"></ItemCard>
-			<ItemCard name="Amber" element="Pyro" rarity={4} imageName="characters/Amber.png"></ItemCard>
-			<MaterialCardsWrapper toggleFunction={toggleVisibility} isVisible={isVisible} />
+			<ItemCardsWrapper toggleFunction={toggleVisibility} />
+			<MaterialCardsWrapper toggleFunction={toggleVisibility} />
 		</>
 	);
 }

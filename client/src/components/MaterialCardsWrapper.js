@@ -5,7 +5,7 @@ import { Button } from './Buttons';
 import { Compare } from './Functions';
 import './css/MaterialCardsWrapper.css';
 
-function MaterialCardsWrapper({ isVisible, toggleFunction }) {
+function MaterialCardsWrapper({ toggleFunction }) {
 	const [data, setData] = useState([]);
 	const [canSubmit, setCanSubmit] = useState(false);
 
