@@ -21,7 +21,9 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 			setData(result);
 			setCanSubmit(true);
 			document.getElementById('inv-loading').classList.add('loading-hide');
-			sessionStorage.setItem('inputData', JSON.stringify({}));
+			if (sessionStorage.getItem('inputData') === null) {
+				sessionStorage.setItem('inputData', JSON.stringify({}));
+			}
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
