@@ -1,13 +1,13 @@
 @import url(common.css);
 
-.card-wrapper {
+.material-card-wrapper {
 	margin: 3px;
 	max-width: 52px;
 	max-height: 86px;
 	position: relative;
 }
 
-.card-body {
+.material-card-border {
 	overflow: hidden;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
@@ -68,7 +68,7 @@
 	background-color: #dbcfb899;
 }
 
-.input-shadow {
+.material-input-shadow {
 	opacity: 0;
 	width: 100%;
 	height: 100%;
@@ -78,7 +78,7 @@
 	transition: opacity 0.2s ease-in-out;
 }
 
-.input-focus.input-shadow { opacity: 1; }
+.input-focus.material-input-shadow { opacity: 1; }
 
 .material-input-box {
 	color: black;
