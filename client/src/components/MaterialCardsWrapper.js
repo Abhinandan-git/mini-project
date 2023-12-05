@@ -5,7 +5,7 @@ import { Button } from './Buttons';
 import { Compare } from './Functions';
 import './css/MaterialCardsWrapper.css';
 
-function MaterialCardsWrapper({ isVisible, toggleFunction }) {
+function MaterialCardsWrapper({ toggleFunction }) {
 	const [data, setData] = useState([]);
 	const [canSubmit, setCanSubmit] = useState(false);
 
@@ -30,9 +30,7 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 		try {
 			const response = await fetch(`http://localhost:3002/api/material-input`, {
 				method: 'POST',
-				headers: {
-					'Content-type': 'application/json'
-				},
+				headers: { 'Content-type': 'application/json' },
 				body: JSON.stringify(materialData)
 			});
 			if (response.ok) {
@@ -62,23 +60,23 @@ function MaterialCardsWrapper({ isVisible, toggleFunction }) {
 	};
 	
 	return (
-		<div className='inventory-wrapper inventory-invis' id='inventory-wrapper'>
-			<div className='inventory-body'>
+		<div className='inventory-block-wrapper inventory-block-invis' id='inventory-block-wrapper'>
+			<div className='inventory-block-body'>
 				<div className='save-button-wrapper'>
 					<Button onClick={handleSubmit} id='inven-save'>
 						<div className='rect-button-label'>Save & Close</div>
 					</Button>
 				</div>
-				<div className='flex-body'>
-					<div className='flex-scroll'>
-						<div className='flex-wrapper'>
+				<div className='inventory-block-flex-body'>
+					<div className='inventory-block-flex-scroll'>
+						<div className='inventory-block-flex-wrapper'>
 							<Loading id='inv-loading' />
-							{data.map((item, index) => (
+							{data.map(item => (
 								<MaterialCard
 									key={item.key}
+									name={item.key}
 									defaultValue={0}
 									rarity={item.rarity}
-									name={item.key}
 									imageName={item.src}
 								/>
 							))}
