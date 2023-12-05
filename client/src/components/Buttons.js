@@ -14,7 +14,7 @@ function Button({ onClick, id, children }) {
 
 function Buttons({ toggleFunction }) {
 	return (
-		<div className='menu-bar'>
+		<div className='header-menu-bar'>
 			<Button onClick={charAdd} id='chr-add'>
 				<div className='rect-button-label'>Add Character</div>
 			</Button>
