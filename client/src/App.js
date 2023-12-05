@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import CharacterCardsWrapper from './components/CharacterCardsWrapper';
 import MaterialCardsWrapper from './components/MaterialCardsWrapper';
-import ItemCardsWrapper from './components/ItemCardsWrapper';
 import Buttons from './components/Buttons';
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
 	return (
 		<>
 			<Buttons toggleFunction={toggleVisibility} />
-			<ItemCardsWrapper toggleFunction={toggleVisibility} />
+			<CharacterCardsWrapper toggleFunction={toggleVisibility} />
 			<MaterialCardsWrapper toggleFunction={toggleVisibility} />
 		</>
 	);
