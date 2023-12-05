@@ -10,10 +10,10 @@ function App() {
 		setIsVisible(!isVisible);
 		if (!isVisible) {
 			document.getElementById('root').classList.add('noscroll');
-			document.getElementById('inventory-wrapper').classList.remove('inventory-invis');
+			document.getElementById('inventory-block-wrapper').classList.remove('inventory-block-invis');
 		} else {
 			document.getElementById('root').classList.remove('noscroll');
-			document.getElementById('inventory-wrapper').classList.add('inventory-invis');
+			document.getElementById('inventory-block-wrapper').classList.add('inventory-block-invis');
 		}
 	};
 

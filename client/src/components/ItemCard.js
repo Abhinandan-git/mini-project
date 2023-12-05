@@ -1,7 +1,9 @@
+// import { useState } from 'react';
 import './css/ItemCard.css';
 import './css/common.css';
 
-function ItemCard({ name, element, rarity, imageName }) {
+function ItemCard({ name, defaultValue, rarity, imageName }) {
+	// const [value, setValue] = useState(defaultValue);
 	return (
 		<div className='item-card-wrapper'>
 			<div className='item-card-body'>
