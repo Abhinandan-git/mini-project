@@ -26,7 +26,7 @@ function CharacterCardsWrapper({ toggleFunction }) {
 	};
 	
 	return (
-		<div className='character-block-wrapper' id='character-block-wrapper'>
+		<div className='character-block-wrapper character-block-invis' id='character-block-wrapper'>
 			<div className='character-block-body'>
 				<div className='save-button-wrapper'>
 					<Button onClick={toggleFunction} id='char-save'>

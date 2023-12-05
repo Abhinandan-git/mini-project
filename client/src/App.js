@@ -43,7 +43,7 @@ function App() {
 
 	return (
 		<>
-			<Buttons toggleFunction={toggleInventoryVisibility} />
+			<Buttons toggleFunction={[toggleWeaponVisibility, toggleCharacterVisibility, toggleInventoryVisibility]} />
 			<CharacterCardsWrapper toggleFunction={toggleCharacterVisibility} />
 			{/* <WeaponCardsWrapper toggleFunction={toggleWeaponVisibility} /> */}
 			<MaterialCardsWrapper toggleFunction={toggleInventoryVisibility} />
