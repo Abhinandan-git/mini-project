@@ -21,6 +21,9 @@ function MaterialCardsWrapper({ toggleFunction }) {
 			setData(result);
 			setCanSubmit(true);
 			document.getElementById('inv-loading').classList.add('loading-hide');
+			if (sessionStorage.getItem('inputData') === null) {
+				sessionStorage.setItem('inputData', JSON.stringify({}));
+			}
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
@@ -38,10 +41,33 @@ function MaterialCardsWrapper({ toggleFunction }) {
 			} else {
 				console.log('Failed to send data');
 			}
-			console.log(materialData);
 		} catch (error) {
 			console.error('Error sending data:', error);
 		};
+	};
+
+	const getFromCache = materialData => {
+		let cacheData = JSON.parse(sessionStorage.getItem('inputData'));
+		let changedData = {};
+		for (const key in materialData) {
+			if (cacheData.hasOwnProperty(key)) {
+				if (materialData[key] !== cacheData[key]) {
+					changedData[key] = materialData[key];
+					if (materialData[key] === 0) {
+						delete cacheData[key];
+					} else {
+						cacheData[key] = materialData[key];
+					}
+				}
+			} else {
+				if (materialData[key] !== 0) {
+					changedData[key] = materialData[key];
+					cacheData[key] = materialData[key];
+				}
+			}
+		}
+		sessionStorage.setItem('inputData', JSON.stringify(cacheData));
+		return changedData;
 	};
 
 	const handleSubmit = () => {
@@ -55,7 +81,8 @@ function MaterialCardsWrapper({ toggleFunction }) {
 					temporaryObject[inputID] = +inputField.value;
 				}
 			}
-			submitData(temporaryObject);
+			const changedData = getFromCache(temporaryObject);
+			if (Object.keys(changedData).length !== 0) submitData(changedData);
 		}
 	};
 	
