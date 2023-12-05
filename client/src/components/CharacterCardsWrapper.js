@@ -15,11 +15,11 @@ function CharacterCardsWrapper({ toggleFunction }) {
 	
 	const fetchData = async () => {
 		try {
-			const response = await fetch(`http://localhost:3001/api/material`);
+			const response = await fetch(`http://localhost:3001/api/character`);
 			const result = await response.json();
 			result.sort(Compare);
 			setData(result);
-			document.getElementById('inv-loading').classList.add('loading-hide');
+			document.getElementById('char-loading').classList.add('loading-hide');
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
@@ -45,7 +45,7 @@ function CharacterCardsWrapper({ toggleFunction }) {
 							<CharacterCard name="Kamisato Ayato" rarity={5} element="Hydro" imageName="characters/KamisatoAyato.png" />
 							<CharacterCard name="Kamisato Ayato" rarity={5} element="Hydro" imageName="characters/KamisatoAyato.png" />
 							<CharacterCard name="Kamisato Ayato" rarity={5} element="Hydro" imageName="characters/KamisatoAyato.png" />
-							{/* <Loading id='inv-loading' />
+							{/* <Loading id='char-loading' />
 							{data.map((Character, index) => (
 								<CharacterCard
 									key={Character.key}
