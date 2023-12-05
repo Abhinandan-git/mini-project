@@ -1,7 +1,7 @@
 @import url(common.css);
 
 .character-card-wrapper {
-	margin: 3px;
+	margin: 5px;
 	width: 106px;
 	height: 148px;
 	max-width: 106px;
@@ -27,6 +27,7 @@
 	border-radius: 3px;
 	align-items: center;
 	justify-content: center;
+	box-shadow: 0 0 5px 0 var(--transparent-black);
 }
 
 .rarity-4 {
