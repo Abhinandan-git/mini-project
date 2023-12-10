@@ -1,14 +1,16 @@
 import { useState } from 'react';
+import CharacterCardsWrapper from './components/CharacterCardsWrapper';
 import MaterialCardsWrapper from './components/MaterialCardsWrapper';
-import ItemCardsWrapper from './components/ItemCardsWrapper';
 import Buttons from './components/Buttons';
 
 function App() {
-	const [isVisible, setIsVisible] = useState(false);
+	const [isInventoryVisible, setIsInventoryVisible] = useState(false);
+	const [isCharacterVisible, setIsCharacterVisible] = useState(false);
+	const [isWeaponVisible, setIsWeaponVisible] = useState(false);
 
-	const toggleVisibility = () => {
-		setIsVisible(!isVisible);
-		if (!isVisible) {
+	const toggleInventoryVisibility = () => {
+		setIsInventoryVisible(!isInventoryVisible);
+		if (!isInventoryVisible) {
 			document.getElementById('root').classList.add('noscroll');
 			document.getElementById('inventory-block-wrapper').classList.remove('inventory-block-invis');
 		} else {
@@ -17,11 +19,34 @@ function App() {
 		}
 	};
 
+	const toggleCharacterVisibility = () => {
+		setIsCharacterVisible(!isCharacterVisible);
+		if (!isCharacterVisible) {
+			document.getElementById('root').classList.add('noscroll');
+			document.getElementById('character-block-wrapper').classList.remove('character-block-invis');
+		} else {
+			document.getElementById('root').classList.remove('noscroll');
+			document.getElementById('character-block-wrapper').classList.add('character-block-invis');
+		}
+	};
+
+	const toggleWeaponVisibility = () => {
+		setIsWeaponVisible(!isWeaponVisible);
+		if (!isWeaponVisible) {
+			document.getElementById('root').classList.add('noscroll');
+			document.getElementById('weapon-block-wrapper').classList.remove('weapon-block-invis');
+		} else {
+			document.getElementById('root').classList.remove('noscroll');
+			document.getElementById('weapon-block-wrapper').classList.add('weapon-block-invis');
+		}
+	};
+
 	return (
 		<>
-			<Buttons toggleFunction={toggleVisibility} />
-			<ItemCardsWrapper toggleFunction={toggleVisibility} />
-			<MaterialCardsWrapper toggleFunction={toggleVisibility} />
+			<Buttons toggleFunction={[toggleWeaponVisibility, toggleCharacterVisibility, toggleInventoryVisibility]} />
+			<CharacterCardsWrapper toggleFunction={toggleCharacterVisibility} />
+			{/* <WeaponCardsWrapper toggleFunction={toggleWeaponVisibility} /> */}
+			<MaterialCardsWrapper toggleFunction={toggleInventoryVisibility} />
 		</>
 	);
 }
