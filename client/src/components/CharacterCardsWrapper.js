@@ -37,13 +37,6 @@ function CharacterCardsWrapper({ toggleFunction }) {
 					<div className='character-block-flex-scroll'>
 						<div className='character-block-flex-wrapper'>
 							<CharacterCard name="Amber" rarity={4} element="Pyro" imageName="characters/Amber.png" />
-							<CharacterCard name="Amber" rarity={4} element="Pyro" imageName="characters/Amber.png" />
-							<CharacterCard name="Amber" rarity={4} element="Pyro" imageName="characters/Amber.png" />
-							<CharacterCard name="Amber" rarity={4} element="Pyro" imageName="characters/Amber.png" />
-							<CharacterCard name="Amber" rarity={4} element="Pyro" imageName="characters/Amber.png" />
-							<CharacterCard name="Kamisato Ayato" rarity={5} element="Hydro" imageName="characters/KamisatoAyato.png" />
-							<CharacterCard name="Kamisato Ayato" rarity={5} element="Hydro" imageName="characters/KamisatoAyato.png" />
-							<CharacterCard name="Kamisato Ayato" rarity={5} element="Hydro" imageName="characters/KamisatoAyato.png" />
 							<CharacterCard name="Kamisato Ayato" rarity={5} element="Hydro" imageName="characters/KamisatoAyato.png" />
 							{/* <Loading id='char-loading' />
 							{data.map((Character, index) => (
