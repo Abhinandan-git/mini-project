@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Compare } from './Functions';
+import { CharacterCompare } from './Functions';
 import { Button } from './Buttons';
 import CharacterCard from './CharacterCard';
-// import Loading from './Loading';
+import Loading from './Loading';
 import './css/CharacterCardsWrapper.css';
 
 function CharacterCardsWrapper({ toggleFunction }) {
-	// eslint-disable-next-line
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
@@ -15,9 +14,9 @@ function CharacterCardsWrapper({ toggleFunction }) {
 	
 	const fetchData = async () => {
 		try {
-			const response = await fetch(`http://localhost:3001/api/character`);
+			const response = await fetch(`http://localhost:3001/api/characters`);
 			const result = await response.json();
-			result.sort(Compare);
+			result.sort(CharacterCompare);
 			setData(result);
 			document.getElementById('char-loading').classList.add('loading-hide');
 		} catch (error) {
@@ -36,18 +35,16 @@ function CharacterCardsWrapper({ toggleFunction }) {
 				<div className='character-block-flex-body'>
 					<div className='character-block-flex-scroll'>
 						<div className='character-block-flex-wrapper'>
-							<CharacterCard name="Amber" rarity={4} element="Pyro" imageName="characters/Amber.png" />
-							<CharacterCard name="Kamisato Ayato" rarity={5} element="Hydro" imageName="characters/KamisatoAyato.png" />
-							{/* <Loading id='char-loading' />
-							{data.map((Character, index) => (
+							<Loading id='char-loading' />
+							{data.map(Character => (
 								<CharacterCard
-									key={Character.key}
-									name={Character.key}
+									key={Character.name_key}
+									name={Character.name}
 									rarity={Character.rarity}
 									imageName={Character.src}
 									element={Character.element}
 								/>
-							))} */}
+							))}
 						</div>
 					</div>
 				</div>
