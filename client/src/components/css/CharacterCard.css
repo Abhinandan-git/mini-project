@@ -3,10 +3,10 @@
 .character-card-wrapper {
 	margin: 5px;
 	width: 106px;
-	height: 148px;
 	max-width: 106px;
 	max-height: 148px;
 	position: relative;
+	height: min-content;
 }
 
 .character-card-body {
@@ -72,6 +72,7 @@
 }
 
 .character-text {
+	padding: 3px 0;
 	font-size: 14px;
 	font-weight: 600;
 	color: var(--grey);
