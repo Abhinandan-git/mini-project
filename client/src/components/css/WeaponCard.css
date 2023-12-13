@@ -1,15 +1,15 @@
 @import url(common.css);
 
-.character-card-wrapper {
+.weapon-card-wrapper {
 	margin: 5px;
 	width: 106px;
 	max-width: 106px;
-	max-height: 148px;
+	max-height: 168px;
 	position: relative;
 	height: min-content;
 }
 
-.character-card-body {
+.weapon-card-body {
 	cursor: pointer;
 }
 
@@ -17,7 +17,7 @@
 	transition: all 0.2s ease 0s;
 }
 
-.character-image-wrapper {
+.weapon-image-wrapper {
 	display: flex;
 	max-width: 106px;
 	min-width: 106px;
@@ -38,7 +38,7 @@
 	background: linear-gradient(160deg, rgba(105, 84, 83, 0.565) 0%, rgba(161, 112, 78, 0.565) 39%, rgba(228, 171, 82, 0.565) 100%);
 }
 
-.character-image {
+.weapon-image {
 	width: 106px;
 	height: 106px;
 	position: relative;
@@ -52,26 +52,15 @@
 	background-repeat: no-repeat;
 }
 
-.character-wrapper:hover .character-image-wrapper {
+.weapon-wrapper:hover .weapon-image-wrapper {
 	filter: brightness(120%);
 }
 
-.character-wrapper:hover .contained-image {
+.weapon-wrapper:hover .contained-image {
 	filter: brightness(83.33%);
 }
 
-.element-overlay {
-	right: 0;
-	bottom: 0;
-	width: 33px;
-	height: 33px;
-	padding: 3px;
-	position: absolute;
-	border-radius: 50%;
-	background-color: var(--transparent-black);
-}
-
-.character-text {
+.weapon-text {
 	padding: 3px 0;
 	font-size: 14px;
 	font-weight: 600;
@@ -79,6 +68,6 @@
 	text-align: center;
 }
 
-.character-wrapper:hover .character-text {
+.weapon-wrapper:hover .weapon-text {
 	text-shadow: 0 0 10px #38a6c2;
 }

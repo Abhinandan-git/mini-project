@@ -26,4 +26,14 @@ const CharacterCompare = (first_object, second_object) => {
 	return 0;
 };
 
-export { charAdd, weaponAdd, Compare, CharacterCompare };
+const WeaponCompare = (first_object, second_object) => {
+	if (first_object.name_key < second_object.name_key){
+		return -1;
+	}
+	if ( first_object.name_key > second_object.name_key ){
+		return 1;
+	}
+	return 0;
+};
+
+export { charAdd, weaponAdd, Compare, CharacterCompare, WeaponCompare };
