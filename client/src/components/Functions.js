@@ -27,10 +27,10 @@ const CharacterCompare = (first_object, second_object) => {
 };
 
 const WeaponCompare = (first_object, second_object) => {
-	if (first_object.name_key < second_object.name_key){
+	if (first_object.rarity_key < second_object.rarity_key){
 		return -1;
 	}
-	if ( first_object.name_key > second_object.name_key ){
+	if ( first_object.rarity_key > second_object.rarity_key ){
 		return 1;
 	}
 	return 0;
