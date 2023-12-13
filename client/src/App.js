@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import CharacterCardsWrapper from './components/CharacterCardsWrapper';
 import MaterialCardsWrapper from './components/MaterialCardsWrapper';
+import WeaponCardsWrapper from './components/WeaponCardsWrapper';
 import Buttons from './components/Buttons';
 
 function App() {
@@ -45,7 +46,7 @@ function App() {
 		<>
 			<Buttons toggleFunction={[toggleWeaponVisibility, toggleCharacterVisibility, toggleInventoryVisibility]} />
 			<CharacterCardsWrapper toggleFunction={toggleCharacterVisibility} />
-			{/* <WeaponCardsWrapper toggleFunction={toggleWeaponVisibility} /> */}
+			<WeaponCardsWrapper toggleFunction={toggleWeaponVisibility} />
 			<MaterialCardsWrapper toggleFunction={toggleInventoryVisibility} />
 		</>
 	);

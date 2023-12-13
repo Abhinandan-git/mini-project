@@ -60,6 +60,18 @@ main_app.get('/api/characters', async (req, res) => {
 	}
 });
 
+main_app.get('/api/weapons', async (req, res) => {
+	try {
+		const database = client.db('weapons');
+		const collection = database.collection('details');
+		const result = await collection.find(filter, { projection }).toArray();
+		res.json(result);
+	} catch (error) {
+		console.error('Error retrieving data from MongoDB Atlas', error);
+		res.status(500).send('Internal Server Error');
+	}
+});
+
 // Routes for material_input_app
 material_input_app.post('/api/material-input', async (req, res) => {
 	try {

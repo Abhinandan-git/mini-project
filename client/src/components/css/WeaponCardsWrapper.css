@@ -1,0 +1,78 @@
+@import url(common.css);
+
+.weapon-block-wrapper {
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	position: absolute;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.65);
+}
+
+.weapon-block-wrapper.weapon-block-invis {
+	display: none;
+}
+
+.weapon-block-body {
+	width: 75%;
+	overflow: hidden;
+	border-radius: 3px;
+	height: calc(100% - 50px);
+	background-color: var(--dark-gunmetal);
+}
+
+.weapon-block-flex-body {
+	width: 100%;
+	padding: 1rem 0;
+	height: calc(100% - 66px);
+	box-shadow: inset 0 0 7px 0 var(--transparent-black), 0 0 7px 0 transparent;
+}
+
+.weapon-block-flex-wrapper {
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
+	width: calc(100% - 2rem);
+	align-content: flex-start;
+}
+
+.weapon-block-flex-scroll {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	overflow-y: auto;
+	align-items: center;
+	justify-content: center;
+}
+
+.weapon-block-flex-scroll::-webkit-scrollbar {
+	width: 6px;
+	height: calc(100% + 1rem);
+}
+
+.weapon-block-flex-scroll::-webkit-scrollbar-track {
+	margin: -1rem 0;
+	height: calc(100% + 1rem);
+	background-color: transparent;
+	box-shadow: inset 0 0 3px 0 var(--transparent-black), 0 0 0 0 transparent;
+}
+
+.weapon-block-flex-scroll::-webkit-scrollbar-thumb {
+	border-radius: 3px;
+	background-color: var(--transparent-black);
+}
+
+.save-button-wrapper {
+	width: 100%;
+	height: 66px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

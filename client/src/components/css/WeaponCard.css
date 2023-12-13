@@ -1,0 +1,73 @@
+@import url(common.css);
+
+.weapon-card-wrapper {
+	margin: 5px;
+	width: 106px;
+	max-width: 106px;
+	max-height: 168px;
+	position: relative;
+	height: min-content;
+}
+
+.weapon-card-body {
+	cursor: pointer;
+}
+
+.div-transition * {
+	transition: all 0.2s ease 0s;
+}
+
+.weapon-image-wrapper {
+	display: flex;
+	max-width: 106px;
+	min-width: 106px;
+	overflow: hidden;
+	max-height: 106px;
+	min-height: 106px;
+	border-radius: 3px;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 0 5px 0 var(--transparent-black);
+}
+
+.rarity-4 {
+	background: linear-gradient(160deg, rgba(89, 84, 130, 0.565) 0%, rgba(120, 102, 157, 0.565) 39%, rgba(183, 133, 201, 0.565) 100%);
+}
+
+.rarity-5 {
+	background: linear-gradient(160deg, rgba(105, 84, 83, 0.565) 0%, rgba(161, 112, 78, 0.565) 39%, rgba(228, 171, 82, 0.565) 100%);
+}
+
+.weapon-image {
+	width: 106px;
+	height: 106px;
+	position: relative;
+}
+
+.contained-image {
+	width: 100%;
+	height: 100%;
+	background-size: contain;
+	background-position: 50%;
+	background-repeat: no-repeat;
+}
+
+.weapon-wrapper:hover .weapon-image-wrapper {
+	filter: brightness(120%);
+}
+
+.weapon-wrapper:hover .contained-image {
+	filter: brightness(83.33%);
+}
+
+.weapon-text {
+	padding: 3px 0;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--grey);
+	text-align: center;
+}
+
+.weapon-wrapper:hover .weapon-text {
+	text-shadow: 0 0 10px #38a6c2;
+}

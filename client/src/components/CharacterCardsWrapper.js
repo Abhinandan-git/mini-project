@@ -36,13 +36,13 @@ function CharacterCardsWrapper({ toggleFunction }) {
 					<div className='character-block-flex-scroll'>
 						<div className='character-block-flex-wrapper'>
 							<Loading id='char-loading' />
-							{data.map(Character => (
+							{data.map(character => (
 								<CharacterCard
-									key={Character.name_key}
-									name={Character.name}
-									rarity={Character.rarity}
-									imageName={Character.src}
-									element={Character.element}
+									key={character.name_key}
+									name={character.name}
+									rarity={character.rarity}
+									imageName={character.src}
+									element={character.element}
 								/>
 							))}
 						</div>
