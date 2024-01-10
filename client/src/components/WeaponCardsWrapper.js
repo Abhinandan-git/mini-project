@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { WeaponCompare } from './Functions';
 import { Button } from './Buttons';
 import WeaponCard from './WeaponCard';
+import SortButton from './SortButton';
 import Loading from './Loading';
 import './css/WeaponCardsWrapper.css';
 
@@ -31,6 +32,7 @@ function WeaponCardsWrapper({ toggleFunction }) {
 					<Button onClick={toggleFunction} id='wpn-save'>
 						<div className='rect-button-label'>Close</div>
 					</Button>
+					<SortButton />
 				</div>
 				<div className='weapon-block-flex-body'>
 					<div className='weapon-block-flex-scroll'>

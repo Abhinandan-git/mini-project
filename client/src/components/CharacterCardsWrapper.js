@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { CharacterCompare } from './Functions';
 import { Button } from './Buttons';
 import CharacterCard from './CharacterCard';
+import SortButton from './SortButton';
 import Loading from './Loading';
 import './css/CharacterCardsWrapper.css';
 
@@ -31,6 +32,7 @@ function CharacterCardsWrapper({ toggleFunction }) {
 					<Button onClick={toggleFunction} id='char-save'>
 						<div className='rect-button-label'>Close</div>
 					</Button>
+					<SortButton />
 				</div>
 				<div className='character-block-flex-body'>
 					<div className='character-block-flex-scroll'>
