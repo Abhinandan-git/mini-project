@@ -68,12 +68,6 @@
 	display: none;
 }
 
-.signup-text {
-	font-size: 12px;
-	text-align: center;
-	color: var(--white-chocolate);
-}
-
 .signin-link {
 	color: inherit;
 	text-decoration: none;
