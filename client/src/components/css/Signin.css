@@ -1,0 +1,80 @@
+@import url(common.css);
+
+.signin-block-wrapper {
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	position: absolute;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.signin-block-flex-body {
+	display: flex;
+	padding: 1rem 0;
+	align-items: center;
+	justify-content: center;
+}
+
+.signin-block-flex-wrapper {
+	gap: 1rem;
+	width: 50%;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: center;
+	align-content: flex-start;
+}
+
+.signin-button-wrapper {
+	width: 100%;
+	height: 66px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.signin-form-block {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.signin-label {
+	color: var(--white-chocolate);
+}
+
+.signin-input-box {
+	width: 100%;
+	height: 32px;
+	color: black;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: left;
+	padding: 0 0.5rem;
+	border-radius: 3px;
+	background-color: #ece5d8;
+}
+
+.signin-hide {
+	display: none;
+}
+
+.signup-text {
+	font-size: 12px;
+	text-align: center;
+	color: var(--white-chocolate);
+}
+
+.signin-link {
+	color: inherit;
+	text-decoration: none;
+}

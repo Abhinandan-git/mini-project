@@ -15,7 +15,7 @@
 
 .div-transition { transition: all 0.1s ease 0s; }
 
-.material-image-wrapper{
+.material-image-wrapper {
 	display: flex;
 	max-width: 52px;
 	min-width: 52px;
