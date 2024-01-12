@@ -4,6 +4,7 @@
 	--black: rgb(0, 0, 0);
 	--grey: rgb(186, 186, 186);
 	--white: rgb(255, 255, 255);
+	--error-red: rgb(197, 40, 61);
 	--light-grey: rgb(204, 204, 204);
 	--dark-gunmetal: rgb(30, 34, 49);
 	--white-chocolate: rgb(236, 229, 216);
@@ -59,4 +60,10 @@ input {
 .offline-txt {
 	color: var(--grey);
 	font-size: 1.25rem;
+}
+
+.text {
+	font-size: 12px;
+	text-align: center;
+	color: var(--white-chocolate);
 }

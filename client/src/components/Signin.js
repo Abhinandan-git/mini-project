@@ -43,7 +43,7 @@ function Signin() {
 					</Button>
 				</div>
 				<hr />
-				<div className='signup-text'>New User?</div>
+				<div className='text'>New User?</div>
 				<div className='signin-button-wrapper'>
 					<Link className='signin-link' to="/signup">
 						<Button onClick={() => {}} id='signin'>
