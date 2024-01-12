@@ -1,8 +1,12 @@
 @import url(common.css);
 
 .links-bar {
-	width: 10%;
+	top: 0;
+	right: 0;
+	width: 15%;
+	height: 5rem;
 	display: flex;
+	position: absolute;
 	align-items: center;
 	justify-content: space-evenly;
 }
