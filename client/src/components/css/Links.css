@@ -1,3 +1,5 @@
+@import url(common.css);
+
 .links-bar {
 	width: 10%;
 	display: flex;
@@ -6,11 +8,16 @@
 }
 
 .sign-link {
-	position: relative;
 	font-size: 14px;
 	font-weight: 700;
+	position: relative;
 	text-decoration: none;
 	color: var(--light-grey);
+	transition: 0.25s ease-in-out;
+}
+.sign-link:hover {
+	color: var(--white-chocolate);
+	text-shadow: 0px 0px 3px var(--transparent-white-chocolate);
 }
 
 .sign-link::after {
@@ -23,8 +30,8 @@
 	position: absolute;
 	transform: scaleX(0);
 	transform-origin: bottom right;
-	background-color: var(--light-grey);
 	transition: transform 0.25s ease-in-out;
+	background-color: var(--white-chocolate);
 }
 
 .sign-link:hover::after {
