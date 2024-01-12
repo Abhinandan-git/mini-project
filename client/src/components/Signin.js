@@ -1,9 +1,9 @@
 // import { useState } from "react";
 
-function Login() {
+function Signin() {
 	return (
 		<></>
 	);
 }
 
-export default Login;
+export default Signin;
