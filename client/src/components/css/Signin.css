@@ -1,6 +1,6 @@
 @import url(common.css);
 
-.signup-block-wrapper {
+.signin-block-wrapper {
 	top: 0;
 	left: 0;
 	margin: 0;
@@ -14,14 +14,14 @@
 	justify-content: center;
 }
 
-.signup-block-flex-body {
+.signin-block-flex-body {
 	display: flex;
 	padding: 1rem 0;
 	align-items: center;
 	justify-content: center;
 }
 
-.signup-block-flex-wrapper {
+.signin-block-flex-wrapper {
 	gap: 1rem;
 	width: 50%;
 	height: 100%;
@@ -32,7 +32,7 @@
 	align-content: flex-start;
 }
 
-.signup-button-wrapper {
+.signin-button-wrapper {
 	width: 100%;
 	height: 66px;
 	display: flex;
@@ -40,7 +40,7 @@
 	justify-content: center;
 }
 
-.signup-form-block {
+.signin-form-block {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -48,11 +48,11 @@
 	justify-content: center;
 }
 
-.signup-label {
+.signin-label {
 	color: var(--white-chocolate);
 }
 
-.signup-input-box {
+.signin-input-box {
 	width: 100%;
 	height: 32px;
 	color: black;
@@ -64,17 +64,17 @@
 	background-color: #ece5d8;
 }
 
-.signup-hide {
+.signin-hide {
 	display: none;
 }
 
-.login-text {
+.signup-text {
 	font-size: 12px;
 	text-align: center;
 	color: var(--white-chocolate);
 }
 
-.signup-link {
+.signin-link {
 	color: inherit;
 	text-decoration: none;
 }

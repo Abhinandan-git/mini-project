@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Button } from './Buttons';
 import Loading from './Loading';
 import React from 'react';
@@ -38,8 +39,17 @@ function Signup() {
 				</div>
 				<div className='signup-button-wrapper'>
 					<Button onClick={submitDetails} id='signup'>
-						<div className='rect-button-label'>Submit</div>
+						<div className='rect-button-label'>Sign Up</div>
 					</Button>
+				</div>
+				<hr />
+				<div className='login-text'>Already have an account?</div>
+				<div className='signin-button-wrapper'>
+					<Link className='signup-link' to="/signin">
+						<Button onClick={() => {}} id='signin'>
+							<div className='rect-button-label'>Log In</div>
+						</Button>
+					</Link>
 				</div>
 			</div>
 			<Loading id='signup-loading' classValue='loading-hide' />
