@@ -12,30 +12,35 @@ function Signup() {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		const userArray = ['john', 'mary', 'jane', 'peter'];
-		const checkUsername = async () => {
-			if (username === '') {
-				setUserDoesNotExists(null);
+		const fetchUsernames = async () => {
+			try {
+				setLoading(true);
+				const response = await fetch('http://localhost:3003/api/usernames');
+				let data = await response.json();
+				data = data[0].usernames;
+				if (username === '') {
+					setUserDoesNotExists(null);
+				} else {
+					const exists = !data.includes(username);
+					setUserDoesNotExists(exists);
+				}
+			} catch (error) {
+				console.error('Error fetching usernames:', error);
+			} finally {
 				setLoading(false);
-				return;
 			}
-			setLoading(true);
-			const timer = Math.floor(Math.random() * 551) + 250;
-			await new Promise((resolve) => setTimeout(resolve, timer));
-			const exists = !userArray.includes(username);
-			setUserDoesNotExists(exists);
-			setLoading(false);
 		};
-		checkUsername();
+
+		fetchUsernames();
 	}, [username]);
 
 	const submitDetails = async () => {
 		const validUser = validateUser();
 		const validPassword = validatePassword();
 		if (validUser === true && validPassword === true) {
-			// Process the details
 			const username = document.getElementById('username').value;
 			const password = document.getElementById('password').value;
+
 			await submitData(username, password).then(() => {
 				navigate('/home');
 			}).catch((error) => {

@@ -128,6 +128,11 @@ material_input_app.post('/api/material-input', async (req, res) => {
 });
 
 // Routes for signup_app
+signup_app.get('/api/usernames', async (req, res) => {
+	const userArray = await getUsernames();
+	res.json(userArray);
+});
+
 signup_app.post('/api/signup', async (req, res) => {
 	try {
 		const database = client.db('data');
