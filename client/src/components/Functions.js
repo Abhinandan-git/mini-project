@@ -1,5 +1,3 @@
-const bcrypt = require('bcrypt');
-
 const charAdd = () => {
 	alert('charAdd');
 };
@@ -38,8 +36,4 @@ const WeaponCompare = (first_object, second_object) => {
 	return 0;
 };
 
-const hashPassword = async password => {
-	return await bcrypt.hash(password, 10);
-};
-
-export { charAdd, weaponAdd, Compare, CharacterCompare, WeaponCompare, hashPassword };
+export { charAdd, weaponAdd, Compare, CharacterCompare, WeaponCompare };

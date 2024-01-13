@@ -32,30 +32,40 @@ function Signup() {
 		const validPassword = validatePassword();
 		if (validUser === true && validPassword === true) {
 			// Process the details
+			const username = document.getElementById('username').value;
+			const password = document.getElementById('password').value;
 			setTimeout(() => {
 				document.getElementById('signup-block').classList.add('signup-hide');
 				document.getElementById('signup-loading').classList.remove('loading-hide');
 			}, 200);
-			await submitData();
+			await submitData(username, password).then(() => {
+				console.log('Redirecting...');
+			}).catch((error) => {
+				document.getElementById('signup-block').classList.remove('signup-hide');
+				document.getElementById('signup-loading').classList.add('loading-hide');
+				console.log('Error:', error);
+			});
 		}
 	}
 
 	const submitData = async (username, password) => {
-		// try {
-		// 	const response = await fetch(`http://localhost:3003/api/signup`, {
-		// 		method: 'POST',
-		// 		headers: { 'Content-type': 'application/json' },
-		// 		body: JSON.stringify(username + ';' + password)
-		// 	});
-		// 	if (response.ok) {
-		// 		console.log('Data sent successfully');
-		// 	} else {
-		// 		console.log('Failed to send data');
-		// 	}
-		// } catch (error) {
-		// 	console.error('Error sending data:', error);
-		// };
-		console.log(password);
+		console.log(username + ';' + password);
+		return new Promise(async (resolve, reject) => {
+			try {
+				const response = await fetch(`http://localhost:3003/api/signup`, {
+					method: 'POST',
+					headers: { 'Content-type': 'application/json' },
+					body: JSON.stringify(username + ';' + password)
+				});
+				if (response.ok) {
+					resolve('Data sent successfully');
+				} else {
+					reject('Failed to send data');
+				}
+			} catch (error) {
+				reject('Error sending data');
+			};
+		});
 	};
 
 	const validateUser = () => {
@@ -155,7 +165,7 @@ function Signup() {
 				<div className='text'>Already have an account?</div>
 				<div className='signin-button-wrapper'>
 					<Link className='signup-link' to="/signin">
-						<Button onClick={() => {}} id='signin'>
+						<Button onClick={() => { }} id='signin'>
 							<div className='rect-button-label'>Log In</div>
 						</Button>
 					</Link>
