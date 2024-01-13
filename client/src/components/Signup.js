@@ -9,19 +9,20 @@ function Signup() {
 	const [username, setUsername] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [userDoesNotExists, setUserDoesNotExists] = useState(null);
+	// eslint-disable-next-line
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		const fetchUsernames = async () => {
 			try {
 				setLoading(true);
-				const response = await fetch('http://localhost:3003/api/usernames');
+				const response = await fetch('http://localhost:3004/api/usernames');
 				let data = await response.json();
 				data = data[0].usernames;
 				if (username === '') {
 					setUserDoesNotExists(null);
 				} else {
-					const exists = !data.includes(username);
+					const exists = !data.includes(username.toLowerCase());
 					setUserDoesNotExists(exists);
 				}
 			} catch (error) {
@@ -38,10 +39,10 @@ function Signup() {
 		const validUser = validateUser();
 		const validPassword = validatePassword();
 		if (validUser === true && validPassword === true) {
-			const username = document.getElementById('username').value;
+			const username = document.getElementById('username').value.toLowerCase();
 			const password = document.getElementById('password').value;
 
-			await submitData(username, password).then(() => {
+			await submitData(username, password).then((res) => {
 				navigate('/home');
 			}).catch((error) => {
 				document.getElementById('signup-block').classList.remove('signup-hide');
@@ -52,17 +53,18 @@ function Signup() {
 	}
 
 	const submitData = async (username, password) => {
-		console.log(username + ';' + password);
 		return new Promise(async (resolve, reject) => {
 			setTimeout(() => {
 				document.getElementById('signup-block').classList.add('signup-hide');
 				document.getElementById('signup-loading').classList.remove('loading-hide');
 				const sendData = async () => {
 					try {
+						const details = username + "|" + password;
+						console.log(details);
 						const response = await fetch(`http://localhost:3003/api/signup`, {
 							method: 'POST',
-							headers: { 'Content-type': 'application/json' },
-							body: JSON.stringify(username + ';' + password)
+							headers: { 'Content-type': 'text/plain' },
+							body: details
 						});
 						if (response.ok) {
 							resolve('Data sent successfully');
@@ -74,7 +76,7 @@ function Signup() {
 					};
 				};
 				sendData();
-			}, 200);
+			}, 500);
 		});
 	};
 
