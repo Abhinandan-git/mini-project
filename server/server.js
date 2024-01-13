@@ -12,16 +12,16 @@ const port = process.env.PORT || 3001;
 const material_input_app = express();
 const material_port = process.env.MATERIALPORT || 3002;
 
-const login_app = express();
+const signup_app = express();
 const login_port = process.env.LOGINPORT || 3003;
 
 const filter = {};
 // Change here
-const user_filter = { "username": "ABC", "password": "password" };
+const user_filter = { 'username': 'ABC', 'password': 'password' };
 const projection = { '_id': 0 };
 
 main_app.use(cors());
-login_app.use(cors());
+signup_app.use(cors());
 material_input_app.use(cors());
 material_input_app.use(bodyParser.json());
 
@@ -38,6 +38,31 @@ async function connectMongoDB() {
 }
 
 connectMongoDB();
+
+async function getUsernames() {
+	const database = client.db('data');
+	const collection = database.collection('usernames');
+	const result = await collection.find(filter, { projection }).toArray();
+	return result;
+}
+
+async function updateUsernames(usernameArray) {
+	const database = client.db('data');
+	const collection = database.collection('usernames');
+
+	try {
+		const updateDocument = { $set: { usernames: usernameArray, }, };
+		const result = await collection.updateOne(filter, updateDocument);
+		if (result.modifiedCount > 0) {
+			console.log(`Updated usernames in the database.`);
+		} else {
+			console.log(`No documents matched the filter criteria.`);
+		}
+	} catch (error) {
+		console.error('Error updating usernames:', error);
+	}
+}
+
 
 // Routes for main_app
 main_app.get('/api/material', async (req, res) => {
@@ -102,9 +127,21 @@ material_input_app.post('/api/material-input', async (req, res) => {
 	}
 });
 
-// Routes for login_app
-login_app.post('/api/signup', async (req, res) => {
+// Routes for signup_app
+signup_app.post('/api/signup', async (req, res) => {
 	try {
+		const database = client.db('data');
+		let collection = database.collection('input');
+
+		const [username, password] = req.body.split(';');
+		let record = { 'username': username, 'password': password }
+		for (let item = 1001; item <= 1332; item++) record[`input_${item}`] = 0
+		const result = await collection.insertOne(record);
+
+		usernameArray = await getUsernames();
+		usernameArray.push(username);
+		await updateUsernames(usernameArray);
+
 		res.status(201).json({ message: 'Data received and processed successfully', data: req.body });
 	} catch (error) {
 		console.error('Error connecting to MongoDB Atlas', error);
@@ -120,6 +157,6 @@ material_input_app.listen(material_port, () => {
 	console.log(`Server running on port ${material_port}`);
 });
 
-login_app.listen(login_port, () => {
+signup_app.listen(login_port, () => {
 	console.log(`Server running on port ${login_port}`);
 });
