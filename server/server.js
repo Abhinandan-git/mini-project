@@ -12,12 +12,16 @@ const port = process.env.PORT || 3001;
 const material_input_app = express();
 const material_port = process.env.MATERIALPORT || 3002;
 
+const login_app = express();
+const login_port = process.env.LOGINPORT || 3003;
+
 const filter = {};
 // Change here
 const user_filter = { "username": "ABC", "password": "password" };
 const projection = { '_id': 0 };
 
 main_app.use(cors());
+login_app.use(cors());
 material_input_app.use(cors());
 material_input_app.use(bodyParser.json());
 
@@ -98,10 +102,24 @@ material_input_app.post('/api/material-input', async (req, res) => {
 	}
 });
 
+// Routes for login_app
+login_app.post('/api/signup', async (req, res) => {
+	try {
+		res.status(201).json({ message: 'Data received and processed successfully', data: req.body });
+	} catch (error) {
+		console.error('Error connecting to MongoDB Atlas', error);
+		res.status(500).send('Internal Server Error');
+	};
+});
+
 main_app.listen(port, () => {
 	console.log(`Server running on port ${port}`);
 });
 
 material_input_app.listen(material_port, () => {
 	console.log(`Server running on port ${material_port}`);
+});
+
+login_app.listen(login_port, () => {
+	console.log(`Server running on port ${login_port}`);
 });

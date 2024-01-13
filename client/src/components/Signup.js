@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Button } from './Buttons';
 import Loading from './Loading';
@@ -8,6 +9,7 @@ function Signup() {
 	const [username, setUsername] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [userDoesNotExists, setUserDoesNotExists] = useState(null);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const userArray = ['john', 'mary', 'jane', 'peter'];
@@ -34,12 +36,8 @@ function Signup() {
 			// Process the details
 			const username = document.getElementById('username').value;
 			const password = document.getElementById('password').value;
-			setTimeout(() => {
-				document.getElementById('signup-block').classList.add('signup-hide');
-				document.getElementById('signup-loading').classList.remove('loading-hide');
-			}, 200);
 			await submitData(username, password).then(() => {
-				console.log('Redirecting...');
+				navigate('/home');
 			}).catch((error) => {
 				document.getElementById('signup-block').classList.remove('signup-hide');
 				document.getElementById('signup-loading').classList.add('loading-hide');
@@ -51,20 +49,27 @@ function Signup() {
 	const submitData = async (username, password) => {
 		console.log(username + ';' + password);
 		return new Promise(async (resolve, reject) => {
-			try {
-				const response = await fetch(`http://localhost:3003/api/signup`, {
-					method: 'POST',
-					headers: { 'Content-type': 'application/json' },
-					body: JSON.stringify(username + ';' + password)
-				});
-				if (response.ok) {
-					resolve('Data sent successfully');
-				} else {
-					reject('Failed to send data');
-				}
-			} catch (error) {
-				reject('Error sending data');
-			};
+			setTimeout(() => {
+				document.getElementById('signup-block').classList.add('signup-hide');
+				document.getElementById('signup-loading').classList.remove('loading-hide');
+				const sendData = async () => {
+					try {
+						const response = await fetch(`http://localhost:3003/api/signup`, {
+							method: 'POST',
+							headers: { 'Content-type': 'application/json' },
+							body: JSON.stringify(username + ';' + password)
+						});
+						if (response.ok) {
+							resolve('Data sent successfully');
+						} else {
+							reject('Failed to send data');
+						}
+					} catch (error) {
+						reject('Error sending data');
+					};
+				};
+				sendData();
+			}, 200);
 		});
 	};
 
