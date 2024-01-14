@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Button } from './Buttons';
 import Loading from './Loading';
@@ -8,42 +9,83 @@ function Signup() {
 	const [username, setUsername] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [userDoesNotExists, setUserDoesNotExists] = useState(null);
+	const navigate = useNavigate();
 
 	useEffect(() => {
-		const userArray = ['john', 'mary', 'jane', 'peter'];
-		const checkUsername = async () => {
-			if (username === '') {
-				setUserDoesNotExists(null);
+		const fetchUsernames = async () => {
+			try {
+				setLoading(true);
+				const response = await fetch('http://localhost:3004/api/usernames');
+				let data = await response.json();
+				data = data[0].usernames;
+				if (username === '') {
+					setUserDoesNotExists(null);
+				} else {
+					const exists = !data.includes(username.toLowerCase());
+					setUserDoesNotExists(exists);
+				}
+			} catch (error) {
+				console.error('Error fetching usernames:', error);
+			} finally {
 				setLoading(false);
-				return;
 			}
-			setLoading(true);
-			const timer = Math.floor(Math.random() * 551) + 250;
-			await new Promise((resolve) => setTimeout(resolve, timer));
-			const exists = !userArray.includes(username);
-			setUserDoesNotExists(exists);
-			setLoading(false);
 		};
-		checkUsername();
+
+		fetchUsernames();
 	}, [username]);
 
-	const submitDetails = () => {
+	const submitDetails = async () => {
 		const validUser = validateUser();
 		const validPassword = validatePassword();
 		if (validUser === true && validPassword === true) {
-			// Process the details
+			const username = document.getElementById('username').value.toLowerCase();
+			const password = document.getElementById('password').value;
+
+			await submitData(username, password).then((res) => {
+				navigate('/home');
+			}).catch((error) => {
+				document.getElementById('signup-block').classList.remove('signup-hide');
+				document.getElementById('signup-loading').classList.add('loading-hide');
+				console.log('Error:', error);
+			});
+		}
+	}
+
+	const submitData = async (username, password) => {
+		return new Promise(async (resolve, reject) => {
 			setTimeout(() => {
 				document.getElementById('signup-block').classList.add('signup-hide');
 				document.getElementById('signup-loading').classList.remove('loading-hide');
-			}, 200);
-		}
-	}
+				const sendData = async () => {
+					try {
+						const details = username + "|" + password;
+						console.log(details);
+						const response = await fetch(`http://localhost:3003/api/signup`, {
+							method: 'POST',
+							headers: { 'Content-type': 'text/plain' },
+							body: details
+						});
+						if (response.ok) {
+							resolve('Data sent successfully');
+						} else {
+							reject('Failed to send data');
+						}
+					} catch (error) {
+						reject('Error sending data');
+					};
+				};
+				sendData();
+			}, 500);
+		});
+	};
 
 	const validateUser = () => {
 		if (userDoesNotExists !== true) {
 			document.getElementById('username').classList.add('pwd-err');
 			document.getElementById('usnm-err').classList.remove('text-hide');
+			return false;
 		}
+		return true;
 	}
 
 	const validatePassword = () => {
@@ -134,7 +176,7 @@ function Signup() {
 				<div className='text'>Already have an account?</div>
 				<div className='signin-button-wrapper'>
 					<Link className='signup-link' to="/signin">
-						<Button onClick={() => {}} id='signin'>
+						<Button onClick={() => { }} id='signin'>
 							<div className='rect-button-label'>Log In</div>
 						</Button>
 					</Link>
