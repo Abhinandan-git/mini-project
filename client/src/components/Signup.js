@@ -9,7 +9,6 @@ function Signup() {
 	const [username, setUsername] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [userDoesNotExists, setUserDoesNotExists] = useState(null);
-	// eslint-disable-next-line
 	const navigate = useNavigate();
 
 	useEffect(() => {
