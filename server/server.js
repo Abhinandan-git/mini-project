@@ -139,6 +139,33 @@ get_username_app.get('/api/usernames', async (req, res) => {
 	res.json(userArray);
 });
 
+get_username_app.get('/api/accounts', async (req, res) => {
+	try {
+		const projection = {
+			'_id': 0,
+			'username': 1,
+			'password': 1
+		};
+		const database = client.db('data');
+		let collection = database.collection('input');
+
+		const found_data = await collection.find(filter, { projection }).toArray();
+		const convertedArray = found_data.reduce((acc, obj) => {
+			const entries = Object.entries(obj).flat();
+			entries.forEach((value, index) => {
+				if (!acc[index]) acc[index] = [];
+				if (index % 2 == 1) acc[index].push(value);
+			});
+			return acc;
+		}, []).filter(arr => arr.length > 0);
+
+		res.status(201).json(convertedArray);
+	} catch (error) {
+		console.error('Error connecting to MongoDB Atlas', error);
+		res.status(500).send('Internal Server Error');
+	};
+});
+
 // Routes for signup_app
 signup_app.post('/api/signup', async (req, res) => {
 	try {
