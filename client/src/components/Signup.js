@@ -1,6 +1,5 @@
+import { useNavigate, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import { Button } from './Buttons';
 import Loading from './Loading';
 import './css/Signup.css';
@@ -111,7 +110,7 @@ function Signup() {
 		document.getElementById('usnm-err').classList.add('text-hide');
 	}
 
-	const removeStyle = () => {
+	const removePasswordStyle = () => {
 		document.getElementById('password').classList.remove('pwd-err');
 		document.getElementById('cnfm-password').classList.remove('pwd-err');
 		document.getElementById('pwd-inv-err').classList.add('text-hide');
@@ -147,7 +146,7 @@ function Signup() {
 								id="password"
 								type="password"
 								name="password"
-								onFocus={removeStyle}
+								onFocus={removePasswordStyle}
 								onBlur={validatePassword}
 								className="signup-input-box"
 							/>
@@ -159,7 +158,7 @@ function Signup() {
 								type="password"
 								id="cnfm-password"
 								name="cnfm-password"
-								onFocus={removeStyle}
+								onFocus={removePasswordStyle}
 								onBlur={validatePassword}
 								className="signup-input-box"
 							/>
