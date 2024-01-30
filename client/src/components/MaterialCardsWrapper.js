@@ -7,9 +7,11 @@ import './css/MaterialCardsWrapper.css';
 function MaterialCardsWrapper({ toggleFunction }) {
 	const [data, setData] = useState([]);
 	const [canSubmit, setCanSubmit] = useState(false);
+	const [values, setValues] = useState(Array(332).fill(0));
 
 	useEffect(() => {
 		fetchData();
+		fetchValues();
 	}, []);
 	
 	const fetchData = async () => {
@@ -23,6 +25,16 @@ function MaterialCardsWrapper({ toggleFunction }) {
 			if (sessionStorage.getItem('inputData') === null) {
 				sessionStorage.setItem('inputData', JSON.stringify({}));
 			}
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	};
+
+	const fetchValues = async () => {
+		try {
+			const response = await fetch(`http://localhost:3001/api/material-input`);
+			const result = await response.json();
+			setValues(result);
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
@@ -97,11 +109,11 @@ function MaterialCardsWrapper({ toggleFunction }) {
 					<div className='inventory-block-flex-scroll'>
 						<div className='inventory-block-flex-wrapper'>
 							<Loading id='inv-loading' />
-							{data.map(item => (
+							{data.map((item, index) => (
 								<MaterialCard
 									key={item.key}
 									name={item.key}
-									defaultValue={0}
+									defaultValue={values[index]}
 									rarity={item.rarity}
 									imageName={item.src}
 								/>
