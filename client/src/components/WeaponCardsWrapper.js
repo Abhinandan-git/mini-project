@@ -1,28 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { WeaponCompare } from './Functions';
 import { Button } from './Buttons';
 import WeaponCard from './WeaponCard';
 import SortButton from './SortButton';
 import Loading from './Loading';
 import './css/WeaponCardsWrapper.css';
 
+const sortStyle = ['', ' select-2']
+const sortOption = ['rarity_key', 'name_key']
+
 function WeaponCardsWrapper({ toggleFunction }) {
 	const [data, setData] = useState([]);
+	const [sorting, setSorting] = useState(0);
 
 	useEffect(() => {
 		fetchData();
+	// eslint-disable-next-line
 	}, []);
+
+	useEffect(() => {
+		sortData([...data]);
+	// eslint-disable-next-line
+	}, [sorting]);
+
+	const sortData = async result => {
+		result.sort((a, b) => a[sortOption[sorting]] - b[sortOption[sorting]]);
+		setData(result);
+	};
 	
 	const fetchData = async () => {
 		try {
 			const response = await fetch(`http://localhost:3001/api/weapons`);
 			const result = await response.json();
-			result.sort(WeaponCompare);
-			setData(result);
+			sortData(result);
 			document.getElementById('wpn-loading').classList.add('loading-hide');
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
+	};
+
+	const setSort = () => {
+		setSorting((sorting + 1) % 2);
 	};
 	
 	return (
@@ -32,7 +49,9 @@ function WeaponCardsWrapper({ toggleFunction }) {
 					<Button onClick={toggleFunction} id='wpn-save'>
 						<div className='rect-button-label'>Close</div>
 					</Button>
-					<SortButton />
+					<div onClick={setSort}>
+						<SortButton _id='wpn-sort' _class={sortStyle[sorting]} />
+					</div>
 				</div>
 				<div className='weapon-block-flex-body'>
 					<div className='weapon-block-flex-scroll'>

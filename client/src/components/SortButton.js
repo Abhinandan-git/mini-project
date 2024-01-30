@@ -1,11 +1,11 @@
 import React from "react";
 import './css/Sort.css';
 
-function SortButton() {
+function SortButton({ _id, _class }) {
 	return (
 		<div className="sort-wrapper">
 			<div className="sort-container">
-				<div className="selected" id={1} />
+				<div className={"selected" + _class} id={_id} />
 				<button className="option">
 					<div className="star" />
 				</button>

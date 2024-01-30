@@ -1,28 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import { CharacterCompare } from './Functions';
 import { Button } from './Buttons';
 import CharacterCard from './CharacterCard';
 import SortButton from './SortButton';
 import Loading from './Loading';
 import './css/CharacterCardsWrapper.css';
 
+const sortStyle = ['', ' select-2']
+const sortOption = ['rarity_key', 'name_key']
+
 function CharacterCardsWrapper({ toggleFunction }) {
 	const [data, setData] = useState([]);
+	const [sorting, setSorting] = useState(0);
 
 	useEffect(() => {
 		fetchData();
+	// eslint-disable-next-line
 	}, []);
-	
+
+	useEffect(() => {
+		sortData([...data]);
+	// eslint-disable-next-line
+	}, [sorting]);
+
+	const sortData = async result => {
+		result.sort((a, b) => a[sortOption[sorting]] - b[sortOption[sorting]]);
+		setData(result);
+	};
+
 	const fetchData = async () => {
 		try {
 			const response = await fetch(`http://localhost:3001/api/characters`);
 			const result = await response.json();
-			result.sort(CharacterCompare);
-			setData(result);
+			sortData(result);
 			document.getElementById('char-loading').classList.add('loading-hide');
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
+	};
+
+	const setSort = () => {
+		setSorting((sorting + 1) % 2);
 	};
 	
 	return (
@@ -32,7 +49,9 @@ function CharacterCardsWrapper({ toggleFunction }) {
 					<Button onClick={toggleFunction} id='char-save'>
 						<div className='rect-button-label'>Close</div>
 					</Button>
-					<SortButton />
+					<div onClick={setSort}>
+						<SortButton _id='char-sort' _class={sortStyle[sorting]} />
+					</div>
 				</div>
 				<div className='character-block-flex-body'>
 					<div className='character-block-flex-scroll'>
