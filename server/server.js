@@ -22,6 +22,7 @@ const filter = {};
 // Change here
 const user_filter = { 'username': 'ABC', 'password': 'password' };
 const projection = { '_id': 0 };
+const user_projection = { '_id': 0, 'username': 0, 'password': 0 };
 
 main_app.use(cors());
 signup_app.use(cors());
@@ -76,6 +77,19 @@ main_app.get('/api/material', async (req, res) => {
 		const database = client.db('materials');
 		const collection = database.collection('details');
 		const result = await collection.find(filter, { projection }).toArray();
+		res.json(result);
+	} catch (error) {
+		console.error('Error retrieving data from MongoDB Atlas', error);
+		res.status(500).send('Internal Server Error');
+	}
+});
+
+main_app.get('/api/material-input', async (req, res) => {
+	try {
+		const database = client.db('data');
+		const collection = database.collection('input');
+		let result = await collection.find(user_filter, { user_projection }).toArray();
+		result = Object.values(result[0]).map(value => (value === null ? 0 : value)).filter(value => Number.isInteger(value));
 		res.json(result);
 	} catch (error) {
 		console.error('Error retrieving data from MongoDB Atlas', error);
