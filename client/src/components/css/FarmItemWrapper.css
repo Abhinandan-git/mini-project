@@ -15,6 +15,10 @@
 	display: flex;
 }
 
+.item-panel-before {
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.8);
+}
+
 .item-panel-before::before {
 	top: 0;
 	left: 0;
@@ -37,7 +41,6 @@
 	position: relative;
 	border-radius: 5px;
 	flex-direction: column;
-	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.8);
 }
 
 .item-panel-name {

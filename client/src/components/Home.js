@@ -3,6 +3,7 @@ import CharacterCardsWrapper from './CharacterCardsWrapper';
 import MaterialCardsWrapper from './MaterialCardsWrapper';
 import WeaponCardsWrapper from './WeaponCardsWrapper';
 import FarmItemWrapper from './FarmItemWrapper';
+import AddItemForm from './AddItemForm';
 import Buttons from './Buttons';
 
 function Home() {
@@ -50,6 +51,7 @@ function Home() {
 			<CharacterCardsWrapper toggleFunction={toggleCharacterVisibility} />
 			<WeaponCardsWrapper toggleFunction={toggleWeaponVisibility} />
 			<MaterialCardsWrapper toggleFunction={toggleInventoryVisibility} />
+			<AddItemForm />
 		</>
 	);
 }
