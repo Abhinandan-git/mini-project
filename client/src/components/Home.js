@@ -2,6 +2,7 @@ import { useState } from 'react';
 import CharacterCardsWrapper from './CharacterCardsWrapper';
 import MaterialCardsWrapper from './MaterialCardsWrapper';
 import WeaponCardsWrapper from './WeaponCardsWrapper';
+import FarmItemWrapper from './FarmItemWrapper';
 import Buttons from './Buttons';
 
 function Home() {
@@ -48,6 +49,7 @@ function Home() {
 			<CharacterCardsWrapper toggleFunction={toggleCharacterVisibility} />
 			<WeaponCardsWrapper toggleFunction={toggleWeaponVisibility} />
 			<MaterialCardsWrapper toggleFunction={toggleInventoryVisibility} />
+			<FarmItemWrapper />
 		</>
 	);
 }
