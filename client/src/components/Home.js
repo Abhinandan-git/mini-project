@@ -46,10 +46,10 @@ function Home() {
 	return (
 		<>
 			<Buttons toggleFunction={[toggleWeaponVisibility, toggleCharacterVisibility, toggleInventoryVisibility]} />
+			<FarmItemWrapper />
 			<CharacterCardsWrapper toggleFunction={toggleCharacterVisibility} />
 			<WeaponCardsWrapper toggleFunction={toggleWeaponVisibility} />
 			<MaterialCardsWrapper toggleFunction={toggleInventoryVisibility} />
-			<FarmItemWrapper />
 		</>
 	);
 }

@@ -1,0 +1,61 @@
+.material-display-done-material {
+	opacity: .4;
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, .5);
+}
+
+.material-display-material-wrapper {
+	margin: 5px;
+	display: flex;
+	overflow: hidden;
+	position: relative;
+	border-radius: 5px;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, .7);
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, .8);
+}
+
+.material-display-done-amount {
+	color: #8f8e8a;
+}
+
+.material-image-wrapper {
+	display: flex;
+	max-width: 52px;
+	min-width: 52px;
+	max-height: 54px;
+	min-height: 54px;
+	align-items: center;
+	justify-content: center;
+}
+
+.material-image {
+	width: 52px;
+	height: 52px;
+}
+
+.material-display-material-wrapper>p>span {
+	font-size: 13px;
+}
+
+.material-display-done {
+	left: 0;
+	top: 19px;
+	width: 100%;
+	display: flex;
+	position: absolute;
+	align-items: center;
+	pointer-events: none;
+	justify-content: center;
+	height: calc(100% - 19px);
+}
+
+.material-display-check {
+	width: 30px;
+	height: 30px;
+	filter: grayscale(80%);
+	background-size: contain;
+	background-position: 50%;
+	background-image: url(../assets/misc/check.png);
+}
