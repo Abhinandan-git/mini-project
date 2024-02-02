@@ -3,13 +3,20 @@ import CharacterCardsWrapper from './CharacterCardsWrapper';
 import MaterialCardsWrapper from './MaterialCardsWrapper';
 import WeaponCardsWrapper from './WeaponCardsWrapper';
 import FarmItemWrapper from './FarmItemWrapper';
-import AddItemForm from './AddItemForm';
+// import AddItemForm from './AddItemForm';
 import Buttons from './Buttons';
 
 function Home() {
 	const [isInventoryVisible, setIsInventoryVisible] = useState(false);
 	const [isCharacterVisible, setIsCharacterVisible] = useState(false);
 	const [isWeaponVisible, setIsWeaponVisible] = useState(false);
+	const [sessionStorageData, setSessionStorageData] = useState(
+		JSON.parse(sessionStorage.getItem('itemList')) || []
+	);
+
+	const updateSessionStorageData = newData => {
+		setSessionStorageData(newData);
+	};
 
 	const toggleInventoryVisibility = () => {
 		setIsInventoryVisible(!isInventoryVisible);
@@ -47,11 +54,10 @@ function Home() {
 	return (
 		<>
 			<Buttons toggleFunction={[toggleWeaponVisibility, toggleCharacterVisibility, toggleInventoryVisibility]} />
-			<FarmItemWrapper />
-			<CharacterCardsWrapper toggleFunction={toggleCharacterVisibility} />
+			<FarmItemWrapper sessionStorageData={sessionStorageData} />
+			<CharacterCardsWrapper toggleFunction={toggleCharacterVisibility} sessionStorageData={sessionStorageData} updateSessionStorageData={updateSessionStorageData} />
 			<WeaponCardsWrapper toggleFunction={toggleWeaponVisibility} />
 			<MaterialCardsWrapper toggleFunction={toggleInventoryVisibility} />
-			<AddItemForm />
 		</>
 	);
 }
