@@ -41,6 +41,7 @@ function Signup() {
 			const password = document.getElementById('password').value;
 
 			await submitData(username, password).then((res) => {
+				document.cookie = `username=${username}; secure; expires=${new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toUTCString()};`;
 				navigate('/home');
 			}).catch((error) => {
 				document.getElementById('signup-block').classList.remove('signup-hide');
