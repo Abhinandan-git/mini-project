@@ -24,7 +24,7 @@
 	text-shadow: 0px 0px 3px var(--transparent-white-chocolate);
 }
 
-.sign-link::after {
+.logout::after {
 	left: 0;
 	bottom: 0;
 	width: 100%;
@@ -38,7 +38,7 @@
 	background-color: var(--white-chocolate);
 }
 
-.sign-link:hover::after {
+.logout:hover::after {
 	transform: scaleX(1);
 	transform-origin: bottom left;
 }

@@ -8,18 +8,18 @@ import './css/CharacterCardsWrapper.css';
 const sortStyle = ['', ' select-2']
 const sortOption = ['rarity_key', 'name_key']
 
-function CharacterCardsWrapper({ toggleFunction }) {
+function CharacterCardsWrapper({ toggleFunction, sessionStorageData, updateSessionStorageData }) {
 	const [data, setData] = useState([]);
 	const [sorting, setSorting] = useState(0);
 
 	useEffect(() => {
 		fetchData();
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, []);
 
 	useEffect(() => {
 		sortData([...data]);
-	// eslint-disable-next-line
+		// eslint-disable-next-line
 	}, [sorting]);
 
 	const sortData = async result => {
@@ -41,7 +41,7 @@ function CharacterCardsWrapper({ toggleFunction }) {
 	const setSort = () => {
 		setSorting((sorting + 1) % 2);
 	};
-	
+
 	return (
 		<div className='character-block-wrapper character-block-invis' id='character-block-wrapper'>
 			<div className='character-block-body'>
@@ -64,6 +64,8 @@ function CharacterCardsWrapper({ toggleFunction }) {
 									rarity={character.rarity}
 									imageName={character.src}
 									element={character.element}
+									sessionStorageData={sessionStorageData}
+									updateSessionStorageData={updateSessionStorageData}
 								/>
 							))}
 						</div>

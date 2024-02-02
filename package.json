@@ -8,7 +8,7 @@
 		"start:client": "cd client && npm start",
 		"start": "concurrently \"npm run start:server\" \"npm run start:client\""
 	},
-	"author": "Abhinandan",
+	"author": "Abhinandan Jain",
 	"license": "MIT",
 	"dependencies": {
 		"concurrently": "^8.2.2",

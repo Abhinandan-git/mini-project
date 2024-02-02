@@ -1,9 +1,17 @@
+import React from 'react';
 import './css/CharacterCard.css';
 import './css/common.css';
 
-function CharacterCard({ name, element, rarity, imageName }) {
+function CharacterCard({ name, element, rarity, imageName, sessionStorageData, updateSessionStorageData }) {
+	const onClickHandler = name => {
+		let data = JSON.parse(sessionStorage.getItem('itemList')) || [];
+		data.push(name);
+		sessionStorage.setItem('itemList', JSON.stringify(data));
+		updateSessionStorageData(data);
+	};
+
 	return (
-		<div className='character-card-wrapper'>
+		<div className='character-card-wrapper' onClick={() => { onClickHandler(name) }}>
 			<div className='character-card-body'>
 				<div className='div-transition'>
 					<div className='character-wrapper'>
