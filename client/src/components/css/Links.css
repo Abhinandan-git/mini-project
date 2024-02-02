@@ -12,6 +12,7 @@
 }
 
 .sign-link {
+	cursor: pointer;
 	font-size: 14px;
 	font-weight: 700;
 	position: relative;

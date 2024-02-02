@@ -15,7 +15,6 @@ function Signin() {
 			const response = await fetch('http://localhost:3004/api/accounts');
 			const data = await response.json();
 			accounts = data;
-			console.log('Fetched data:', accounts);
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
@@ -34,6 +33,7 @@ function Signin() {
 			if (password === storedPassword) {
 				document.getElementById('signin-block').classList.add('signin-hide');
 				document.getElementById('signin-loading').classList.remove('loading-hide');
+				document.cookie = `username=${username}; secure; expires=${new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toUTCString()};`;
 				setTimeout(() => {
 					document.getElementById('signin-loading').classList.add('loading-hide');
 					navigate('/home');
