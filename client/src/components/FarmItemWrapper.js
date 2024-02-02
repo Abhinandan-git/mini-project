@@ -7,6 +7,7 @@ import ascendImage from './assets/misc/ascend.png';
 
 function FarmItemWrapper({ sessionStorageData }) {
 	const [data, setData] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	const fetchData = async () => {
 		try {
@@ -15,6 +16,8 @@ function FarmItemWrapper({ sessionStorageData }) {
 			setData(result);
 		} catch (error) {
 			console.error('Error fetching data:', error);
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -26,6 +29,8 @@ function FarmItemWrapper({ sessionStorageData }) {
 		const foundObject = data.find(obj => obj.name === name);
 		return foundObject ? foundObject[key] : "Details not found";
 	};
+
+	if (loading) return;
 
 	return (
 		<div className='farm-item-list'>
