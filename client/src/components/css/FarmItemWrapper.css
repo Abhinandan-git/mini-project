@@ -9,6 +9,10 @@
 	grid-template-columns: repeat(3, minmax(334px, 1fr));
 }
 
+.farm-item-invis {
+	display: none;
+}
+
 .item-panel-wrapper {
 	width: 100%;
 	height: 100%;
