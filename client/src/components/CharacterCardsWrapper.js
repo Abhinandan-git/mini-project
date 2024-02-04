@@ -16,6 +16,8 @@ function CharacterCardsWrapper({ toggleFunction, sessionStorageData, updateSessi
 	const [rarity, setRarity] = useState('');
 	const [isFormVisible, setFormVisible] = useState(false);
 
+	let farmData = JSON.parse(sessionStorage.getItem('itemList')) || [];
+
 	useEffect(() => {
 		fetchData();
 		// eslint-disable-next-line
@@ -76,14 +78,14 @@ function CharacterCardsWrapper({ toggleFunction, sessionStorageData, updateSessi
 						<div className='character-block-flex-wrapper'>
 							<Loading id='char-loading' />
 							{data.map(character => (
-								<CharacterCard
+								!farmData.includes(character.name) ? <CharacterCard
 									key={character.name_key}
 									name={character.name}
 									rarity={character.rarity}
 									imageName={character.src}
 									element={character.element}
 									clickHandler={toggleFormVisibility}
-								/>
+								/> : <></>
 							))}
 						</div>
 					</div>
