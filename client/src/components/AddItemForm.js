@@ -77,7 +77,7 @@ function AddItemForm({ toggleFormVisibility, username, rarity, sessionStorageDat
 				</div>
 			</div>
 			<div className="save-button-wrapper">
-				<Button onClick={() => { toggleFormVisibility(); onClickHandler(); }} id="inven-save">
+				<Button onClick={() => { onClickHandler(username); toggleFormVisibility(); }} id="inven-save">
 					<div className="rect-button-label">Save</div>
 				</Button>
 			</div>

@@ -4,8 +4,8 @@ import './css/common.css';
 
 function CharacterCard({ name, element, rarity, imageName, clickHandler }) {
 	const onClickHandler = name => {
+		clickHandler(name, rarity);
 		document.getElementById(name).style.display = 'none';
-		clickHandler();
 	};
 
 	return (

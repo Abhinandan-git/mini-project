@@ -8,7 +8,7 @@ function FarmItem({ done, rarity }) {
 		<div style={{ position: 'relative' }}>
 			<div className={`material-display-material-wrapper ${done ? 'material-display-done-material' : ''}`}>
 				<p className={done ? 'material-display-done-amount' : ''}>
-					<span>88</span>
+					<span>10</span>
 				</p>
 				<div>
 					<div style={{ transition: 'all 0.1s ease 0s' }}>

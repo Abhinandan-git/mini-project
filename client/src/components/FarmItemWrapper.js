@@ -72,9 +72,9 @@ function FarmItemWrapper({ sessionStorageData }) {
 										<h4 className='item-panel-item-summary-title'>Level</h4>
 										<div className='item-panel-item-summary-pair'>
 											{/* Fill from form */}
-											<div className='item-panel-item-summary-label'>9</div>
+											<div className='item-panel-item-summary-label'>1</div>
 											<div className='item-panel-arrow' />
-											<div className='item-panel-item-summary-label'>80<div className='item-panel-star' /></div>
+											<div className='item-panel-item-summary-label'>90<div className='item-panel-star' /></div>
 										</div>
 									</div>
 									<div className='item-panel-item-summary-talent'>
@@ -83,17 +83,17 @@ function FarmItemWrapper({ sessionStorageData }) {
 											<div>
 												{/* Fill from form */}
 												<div style={{ display: 'flex' }}>
-													<div className='item-panel-item-summary-label'>9</div>
+													<div className='item-panel-item-summary-label'>1</div>
 													<div className='item-panel-arrow' />
 													<div className='item-panel-item-summary-label'>10</div>
 												</div>
 												<div style={{ display: 'flex' }}>
-													<div className='item-panel-item-summary-label'>9</div>
+													<div className='item-panel-item-summary-label'>1</div>
 													<div className='item-panel-arrow' />
 													<div className='item-panel-item-summary-label'>10</div>
 												</div>
 												<div style={{ display: 'flex' }}>
-													<div className='item-panel-item-summary-label'>9</div>
+													<div className='item-panel-item-summary-label'>1</div>
 													<div className='item-panel-arrow' />
 													<div className='item-panel-item-summary-label'>10</div>
 												</div>

@@ -13,6 +13,7 @@ function CharacterCardsWrapper({ toggleFunction, sessionStorageData, updateSessi
 	const [data, setData] = useState([]);
 	const [sorting, setSorting] = useState(0);
 	const [username, setUsername] = useState('');
+	const [rarity, setRarity] = useState('');
 	const [isFormVisible, setFormVisible] = useState(false);
 
 	useEffect(() => {
@@ -45,7 +46,9 @@ function CharacterCardsWrapper({ toggleFunction, sessionStorageData, updateSessi
 		setSorting((sorting + 1) % 2);
 	};
 
-	const toggleFormVisibility = () => {
+	const toggleFormVisibility = (name, rarity) => {
+		setUsername(name);
+		setRarity(rarity);
 		setFormVisible(!isFormVisible);
 		if (!isFormVisible) {
 			toggleFunction();
@@ -56,12 +59,6 @@ function CharacterCardsWrapper({ toggleFunction, sessionStorageData, updateSessi
 			document.getElementById('item-form-wrapper').classList.add('item-form-invis');
 		}
 	};
-
-	const getRarity = name => {
-		const foundObject = data.find(obj => obj.name === name);
-		return foundObject ? foundObject.rarity : "Amber.png";
-	};
-
 
 	return (<>
 		<div className='character-block-wrapper character-block-invis' id='character-block-wrapper'>
@@ -86,7 +83,6 @@ function CharacterCardsWrapper({ toggleFunction, sessionStorageData, updateSessi
 									imageName={character.src}
 									element={character.element}
 									clickHandler={toggleFormVisibility}
-									onClick={() => { setUsername(character.name) }}
 								/>
 							))}
 						</div>
@@ -97,10 +93,10 @@ function CharacterCardsWrapper({ toggleFunction, sessionStorageData, updateSessi
 		<div className='item-form-invis' id='item-form-wrapper'>
 			{isFormVisible ?
 				<AddItemForm
-					toggleFormVisibility={toggleFormVisibility}
+					rarity={rarity}
 					username={username}
-					rarity={getRarity(username)}
 					sessionStorageData={sessionStorageData}
+					toggleFormVisibility={toggleFormVisibility}
 					updateSessionStorageData={updateSessionStorageData}
 				/> : <></>}
 		</div>
