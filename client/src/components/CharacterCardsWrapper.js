@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from './Buttons';
 import CharacterCard from './CharacterCard';
+import AddItemForm from './AddItemForm';
 import SortButton from './SortButton';
 import Loading from './Loading';
 import './css/CharacterCardsWrapper.css';
@@ -11,6 +12,11 @@ const sortOption = ['rarity_key', 'name_key']
 function CharacterCardsWrapper({ toggleFunction, sessionStorageData, updateSessionStorageData }) {
 	const [data, setData] = useState([]);
 	const [sorting, setSorting] = useState(0);
+	const [username, setUsername] = useState('');
+	const [rarity, setRarity] = useState('');
+	const [isFormVisible, setFormVisible] = useState(false);
+
+	let farmData = JSON.parse(sessionStorage.getItem('itemList')) || [];
 
 	useEffect(() => {
 		fetchData();
@@ -42,7 +48,21 @@ function CharacterCardsWrapper({ toggleFunction, sessionStorageData, updateSessi
 		setSorting((sorting + 1) % 2);
 	};
 
-	return (
+	const toggleFormVisibility = (name, rarity) => {
+		setUsername(name);
+		setRarity(rarity);
+		setFormVisible(!isFormVisible);
+		if (!isFormVisible) {
+			toggleFunction();
+			document.getElementById('root').classList.add('noscroll');
+			document.getElementById('item-form-wrapper').classList.remove('item-form-invis');
+		} else {
+			document.getElementById('root').classList.remove('noscroll');
+			document.getElementById('item-form-wrapper').classList.add('item-form-invis');
+		}
+	};
+
+	return (<>
 		<div className='character-block-wrapper character-block-invis' id='character-block-wrapper'>
 			<div className='character-block-body'>
 				<div className='save-button-wrapper'>
@@ -58,22 +78,31 @@ function CharacterCardsWrapper({ toggleFunction, sessionStorageData, updateSessi
 						<div className='character-block-flex-wrapper'>
 							<Loading id='char-loading' />
 							{data.map(character => (
-								<CharacterCard
+								!farmData.includes(character.name) ? <CharacterCard
 									key={character.name_key}
 									name={character.name}
 									rarity={character.rarity}
 									imageName={character.src}
 									element={character.element}
-									sessionStorageData={sessionStorageData}
-									updateSessionStorageData={updateSessionStorageData}
-								/>
+									clickHandler={toggleFormVisibility}
+								/> : <></>
 							))}
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	);
+		<div className='item-form-invis' id='item-form-wrapper'>
+			{isFormVisible ?
+				<AddItemForm
+					rarity={rarity}
+					username={username}
+					sessionStorageData={sessionStorageData}
+					toggleFormVisibility={toggleFormVisibility}
+					updateSessionStorageData={updateSessionStorageData}
+				/> : <></>}
+		</div>
+	</>);
 }
 
-export default CharacterCardsWrapper;
+export default CharacterCardsWrapper;	
